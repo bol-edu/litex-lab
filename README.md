@@ -23,7 +23,7 @@ More [introduction of LiteX](https://github.com/enjoy-digital/litex#welcome-to-l
 * https://github.com/enjoy-digital/litex#quick-start-guide
 * https://github.com/litex-hub/linux-on-litex-vexriscv
 
-## Setup Environment for LiteX
+## Run Linux OS on VexRiscv soc with Verilator RTL simulator
 
 Install basic tools and dependencies
 ```
@@ -57,7 +57,7 @@ export PATH=$PATH:~/.local/bin
 ```
 [Install litex python3 dependencies.log](https://github.com/bol-edu/litex-lab/files/11359136/Install.litex.python3.dependencies.log)
 
-## Run Linux OS on VexRiscv soc with Verilator RTL simulator
+Install and run litex
 ```
 git clone https://github.com/litex-hub/linux-on-litex-vexriscv
 cd linux-on-litex-vexriscv
@@ -71,7 +71,7 @@ wget -O linux_2022_03_23.zip  https://github.com/litex-hub/linux-on-litex-vexris
 unzip linux_2022_03_23.zip -d ./images (enter y)
 ./sim.py
 ```
-[Run linux os on vexriscv soc with verilator rtl simulator.log](https://github.com/bol-edu/litex-lab/files/11359154/Run.linux.os.on.vexriscv.soc.with.verilator.rtl.simulator.log)
+[Install and run litex.log](https://github.com/bol-edu/litex-lab/files/11359202/Install.and.run.litex.log)
 
 ```console
 buildroot login: root
@@ -104,3 +104,19 @@ Built-in commands:
 root@buildroot:~#
 ```
 ## Port VexRiscv soc to Xilinx kv260 board
+
+Install OpenOCD (needed for hardware test)
+```
+sudo apt install libtool automake pkg-config libusb-1.0-0-dev
+git clone https://github.com/ntfreak/openocd.git
+cd openocdT
+./bootstrap
+./configure --enable-ftdi
+sudo make install
+```
+[Install OpenOCD.log](https://github.com/bol-edu/litex-lab/files/11359210/Install.OpenOCD.log)
+
+Build the kv260 bitstream
+```
+ToDo..
+```
