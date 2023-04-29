@@ -1,7 +1,7 @@
 # Introduction to LiteX
 The LiteX framework provides a toolchain infrastructure to create FPGA Cores/SoCs, to explore various digital design architectures and create [full FPGA based systems](https://github.com/enjoy-digital/litex/wiki/Projects). Efabless [caravel management soc](https://github.com/efabless/caravel_mgmt_soc_litex) was also delivered from LiteX.  
 
-More [introduction of LiteX](https://github.com/enjoy-digital/litex#quick-start-guide).
+More [introduction of LiteX](https://github.com/enjoy-digital).
 
 ## LiteX Lab Purpose
 * Run Linux OS on VexRiscv soc with Verilator RTL simulator
