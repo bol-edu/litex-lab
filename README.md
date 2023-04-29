@@ -740,7 +740,8 @@ Setting up libevent-extra-2.1-7:amd64 (2.1.11-stable-1) ...
 Setting up libevent-openssl-2.1-7:amd64 (2.1.11-stable-1) ...
 Setting up libevent-dev (2.1.11-stable-1) ...
 Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
-```console
+```
+
 Compile and install latest Verilator
 ```
 sudo apt install autoconf flex bison help2man -y
@@ -1383,4 +1384,4 @@ Installed examples to /usr/local/share/verilator/examples
 
 For documentation see 'man verilator' or 'verilator --help'
 For forums and to report bugs see https://verilator.org
-```console
+```
