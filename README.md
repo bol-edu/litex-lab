@@ -1385,3 +1385,39 @@ Installed examples to /usr/local/share/verilator/examples
 For documentation see 'man verilator' or 'verilator --help'
 For forums and to report bugs see https://verilator.org
 ```
+
+Install litex python3 dependencies
+```
+cd ~
+python3 -m pip install ninja
+python3 -m pip install meson==0.59
+export PATH=$PATH:~/.local/bin
+```
+```console
+kevin@kevin:~/verilator$ cd ~
+kevin@kevin:~$ python3 -m pip install ninja
+Collecting ninja
+  Downloading ninja-1.11.1-py2.py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (145 kB)
+     |████████████████████████████████| 145 kB 1.2 MB/s
+Installing collected packages: ninja
+  WARNING: The script ninja is installed in '/home/kevin/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed ninja-1.11.1
+kevin@kevin:~$ python3 -m pip install meson==0.59
+Collecting meson==0.59
+  Downloading meson-0.59.0.tar.gz (1.9 MB)
+     |████████████████████████████████| 1.9 MB 1.2 MB/s
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+    Preparing wheel metadata ... done
+Building wheels for collected packages: meson
+  Building wheel for meson (PEP 517) ... done
+  Created wheel for meson: filename=meson-0.59.0-py3-none-any.whl size=806970 sha256=5896455dfb37178037a3fb4e2593fb0396346c8a2b9986e35094354419af2d5a
+  Stored in directory: /home/kevin/.cache/pip/wheels/40/a1/44/b17f8e03263417243f4af1e1deb7851cbeef292251c7364bc0
+Successfully built meson
+Installing collected packages: meson
+  WARNING: The script meson is installed in '/home/kevin/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed meson-0.59.0
+kevin@kevin:~$ export PATH=$PATH:~/.local/bin
+```
