@@ -69,7 +69,7 @@ sudo ./litex_setup.py --gcc=riscv (enter y)
 ~/litex-boards/litex_boards/targets/xilinx_kv260.py
 wget -O linux_2022_03_23.zip  https://github.com/litex-hub/linux-on-litex-vexriscv/files/8331338/linux_2022_03_23.zip
 unzip linux_2022_03_23.zip -d ./images (enter y)
-./sim.py
+./sim.py (take a long time)
 ```
 [Install and run litex.log](https://github.com/bol-edu/litex-lab/files/11359202/Install.and.run.litex.log)
 
