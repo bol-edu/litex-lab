@@ -107,7 +107,7 @@ root@buildroot:~#
 
 Install OpenOCD (needed for hardware test)
 ```
-sudo apt install libtool automake pkg-config libusb-1.0-0-dev
+sudo apt install libtool automake pkg-config libusb-1.0-0-dev 
 git clone https://github.com/ntfreak/openocd.git
 cd openocd
 ./bootstrap
