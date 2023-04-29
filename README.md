@@ -739,6 +739,21 @@ Setting up libevent-extra-2.1-7:amd64 (2.1.11-stable-1) ...
 Setting up libevent-openssl-2.1-7:amd64 (2.1.11-stable-1) ...
 Setting up libevent-dev (2.1.11-stable-1) ...
 Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
+```console
+
+Compile and install latest Verilator
+```
+sudo apt install autoconf flex bison help2man -y
+git clone https://github.com/verilator/verilator
+cd verilator
+git pull
+autoconf
+export VERILATOR_ROOT=`pwd`
+./configure
+make -j `nproc`
+sudo make install
+```
+```console
 kevin@kevin:~$ sudo apt install autoconf flex bison help2man -y
 Reading package lists... Done
 Building dependency tree
@@ -809,5 +824,563 @@ Setting up libfl-dev:amd64 (2.6.4-6.2) ...
 Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
 Processing triggers for man-db (2.9.1-1) ...
 Processing triggers for install-info (6.7.0.dfsg.2-5) ...
-kevin@kevin:~$
+kevin@kevin:~$ git clone https://github.com/verilator/verilator
+Cloning into 'verilator'...
+remote: Enumerating objects: 73132, done.
+remote: Counting objects: 100% (856/856), done.
+remote: Compressing objects: 100% (383/383), done.
+remote: Total 73132 (delta 532), reused 739 (delta 473), pack-reused 72276
+Receiving objects: 100% (73132/73132), 35.89 MiB | 15.74 MiB/s, done.
+Resolving deltas: 100% (62560/62560), done.
+kevin@kevin:~$ cd verilator/
+kevin@kevin:~/verilator$ git pull
+Already up to date.
+kevin@kevin:~/verilator$ autoconf
+kevin@kevin:~/verilator$ export VERILATOR_ROOT=`pwd`
+kevin@kevin:~/verilator$ ./configure
+configuring for Verilator 5.009 devel
+checking whether to perform partial static linking of Verilator binary... yes
+checking whether to use tcmalloc... check
+checking whether to use -m32... no
+checking whether to build for coverage collection... no
+checking whether to use hardcoded paths... yes
+checking whether to show and stop on compilation warnings... no
+checking whether to run long tests... no
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables...
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+compiler is g++ --version = g++ (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
+checking that C++ compiler can compile simple program... yes
+checking for ar... ar
+checking for perl... /usr/bin/perl
+checking for python3... /usr/bin/python3
+checking for flex... /usr/bin/flex
+/usr/bin/flex --version = flex 2.6.4
+checking for bison... /usr/bin/bison
+/usr/bin/bison --version = bison (GNU Bison) 3.5.1
+checking for ccache... no
+checking how to run the C++ preprocessor... g++ -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for size_t... yes
+checking for size_t... (cached) yes
+checking for inline... inline
+checking whether g++ accepts -pg... yes
+checking whether g++ accepts -std=gnu++17... yes
+checking whether g++ accepts -Wextra... yes
+checking whether g++ accepts -Wfloat-conversion... yes
+checking whether g++ accepts -Wlogical-op... yes
+checking whether g++ accepts -Wthread-safety... no
+checking whether g++ accepts -fcoroutines-ts... no
+checking whether coroutines are supported by g++... no
+checking whether g++ accepts -Qunused-arguments... no
+checking whether g++ accepts -faligned-new... yes
+checking whether g++ accepts -Wno-unused-parameter... yes
+checking whether g++ accepts -Wno-shadow... yes
+checking whether g++ accepts -Wno-char-subscripts... yes
+checking whether g++ accepts -Wno-null-conversion... no
+checking whether g++ accepts -Wno-parentheses-equality... no
+checking whether g++ accepts -Wno-unused... yes
+checking whether g++ accepts -Og... yes
+checking whether g++ accepts -ggdb... yes
+checking whether g++ accepts -gz... yes
+checking whether g++ linker accepts -gz... yes
+checking whether g++ accepts -faligned-new... yes
+checking whether g++ accepts -fbracket-depth=4096... no
+checking whether g++ accepts -fcf-protection=none... yes
+checking whether g++ accepts -mno-cet... no
+checking whether g++ accepts -Qunused-arguments... no
+checking whether g++ accepts -Wno-bool-operation... yes
+checking whether g++ accepts -Wno-tautological-bitwise-compare... no
+checking whether g++ accepts -Wno-parentheses-equality... no
+checking whether g++ accepts -Wno-sign-compare... yes
+checking whether g++ accepts -Wno-uninitialized... yes
+checking whether g++ accepts -Wno-unused-but-set-variable... yes
+checking whether g++ accepts -Wno-unused-parameter... yes
+checking whether g++ accepts -Wno-unused-variable... yes
+checking whether g++ accepts -Wno-shadow... yes
+checking whether g++ linker accepts -mt... no
+checking whether g++ linker accepts -pthread... yes
+checking whether g++ linker accepts -lpthread... yes
+checking whether g++ linker accepts -latomic... yes
+checking whether g++ linker accepts -static-libgcc... yes
+checking whether g++ linker accepts -static-libstdc++... yes
+checking whether g++ linker accepts -Xlinker -gc-sections... yes
+checking whether g++ linker accepts -lpthread... yes
+checking whether g++ linker accepts -lbcrypt... no
+checking whether g++ linker accepts -lpsapi... no
+checking whether g++ linker accepts -l:libtcmalloc_minimal.a... no
+checking whether g++ supports C++11... yes
+checking for struct stat.st_mtim.tv_nsec... yes
+checking whether SystemC is found (in system path)... no
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/Makefile_obj
+config.status: creating include/verilated.mk
+config.status: creating include/verilated_config.h
+config.status: creating verilator.pc
+config.status: creating verilator-config.cmake
+config.status: creating verilator-config-version.cmake
+config.status: creating src/config_build.h
+
+Now type 'make' (or sometimes 'gmake') to build Verilator.
+
+kevin@kevin:~/verilator$ make -j `nproc`
+pod2man bin/verilator verilator.1
+------------------------------------------------------------
+pod2man bin/verilator_coverage verilator_coverage.1
+help2man --no-info --no-discard-stderr --version-string=- bin/verilator_gantt -o verilator_gantt.1
+help2man --no-info --no-discard-stderr --version-string=- bin/verilator_profcfunc -o verilator_profcfunc.1
+making verilator in src
+make -C src
+make[1]: Entering directory '/home/kevin/verilator/src'
+mkdir -p obj_dbg
+/usr/bin/python3 ./config_rev . >config_rev.h
+mkdir -p obj_opt
+make -C obj_dbg -j 1  TGT=../../bin/verilator_bin_dbg VL_DEBUG=1 -f ../Makefile_obj serial
+make -C obj_dbg       TGT=../../bin/verilator_coverage_bin_dbg VL_DEBUG=1 VL_VLCOV=1 -f ../Makefile_obj serial_vlcov
+make -C obj_opt -j 1  TGT=../../bin/verilator_bin -f ../Makefile_obj serial
+make[2]: Entering directory '/home/kevin/verilator/src'
+make[2]: warning: -j1 forced in submake: resetting jobserver mode.
+make[2]: Entering directory '/home/kevin/verilator/src'
+make[2]: warning: -j1 forced in submake: resetting jobserver mode.
+/usr/bin/python3 ../astgen -I .. --astdef V3AstNodeDType.h --astdef V3AstNodeExpr.h --astdef V3AstNodeOther.h --dfgdef V3DfgVertices.h --classes
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+/usr/bin/python3 ../vlcovgen --srcdir ..
+/usr/bin/python3 ../astgen -I .. --astdef V3AstNodeDType.h --astdef V3AstNodeExpr.h --astdef V3AstNodeOther.h --dfgdef V3DfgVertices.h --classes
+touch vlcovgen.d
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+make -C obj_dbg       TGT=../../bin/verilator_coverage_bin_dbg VL_DEBUG=1 VL_VLCOV=1 -f ../Makefile_obj
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../VlcMain.cpp -o VlcMain.o
+      Compile flags:  g++ -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC="" -DDEFENV_SYSTEMC_ARCH="" -DDEFENV_SYSTEMC_INCLUDE="" -DDEFENV_SYSTEMC_LIBDIR="" -DDEFENV_VERILATOR_ROOT="/home/kevin/verilator"
+If you get errors from verilog.y below, try upgrading bison to version 1.875 or newer.
+/usr/bin/python3 ../bisonpre --yacc /usr/bin/bison -d -v -o V3ParseBison.c ../verilog.y
+  edit ../verilog.y V3ParseBison_pretmp.y
+If you get errors from verilog.y below, try upgrading bison to version 1.875 or newer.
+/usr/bin/python3 ../bisonpre --yacc /usr/bin/bison -d -v -o V3ParseBison.c ../verilog.y
+  edit ../verilog.y V3ParseBison_pretmp.y
+  /usr/bin/bison -d -v --report=itemset --report=lookahead -b V3ParseBison_pretmp -o V3ParseBison_pretmp.c V3ParseBison_pretmp.y
+  /usr/bin/bison -d -v --report=itemset --report=lookahead -b V3ParseBison_pretmp -o V3ParseBison_pretmp.c V3ParseBison_pretmp.y
+  edit V3ParseBison_pretmp.output V3ParseBison.output
+  edit V3ParseBison_pretmp.output V3ParseBison.output
+      Linking ../../bin/verilator_coverage_bin_dbg...
+g++  -gz -static-libgcc -static-libstdc++ -Xlinker -gc-sections -o ../../bin/verilator_coverage_bin_dbg VlcMain.o   -lpthread -lm
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+  edit V3ParseBison_pretmp.c V3ParseBison.c
+  edit V3ParseBison_pretmp.c V3ParseBison.c
+  edit V3ParseBison_pretmp.h V3ParseBison.h
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+make -C obj_dbg       TGT=../../bin/verilator_bin_dbg VL_DEBUG=1 -f ../Makefile_obj
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../Verilator.cpp -o Verilator.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Active.cpp -o V3Active.o
+      Compile flags:  g++ -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC="" -DDEFENV_SYSTEMC_ARCH="" -DDEFENV_SYSTEMC_INCLUDE="" -DDEFENV_SYSTEMC_LIBDIR="" -DDEFENV_VERILATOR_ROOT="/home/kevin/verilator"
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3ActiveTop.cpp -o V3ActiveTop.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Assert.cpp -o V3Assert.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3AssertPre.cpp -o V3AssertPre.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Ast.cpp -o V3Ast.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3AstNodes.cpp -o V3AstNodes.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Begin.cpp -o V3Begin.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Branch.cpp -o V3Branch.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Broken.cpp -o V3Broken.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3CCtors.cpp -o V3CCtors.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3CUse.cpp -o V3CUse.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Case.cpp -o V3Case.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Cast.cpp -o V3Cast.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Class.cpp -o V3Class.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Clean.cpp -o V3Clean.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Clock.cpp -o V3Clock.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Combine.cpp -o V3Combine.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Common.cpp -o V3Common.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Config.cpp -o V3Config.o
+/usr/bin/python3 ../astgen -I .. --astdef V3AstNodeDType.h --astdef V3AstNodeExpr.h --astdef V3AstNodeOther.h --dfgdef V3DfgVertices.h V3Const.cpp
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Coverage.cpp -o V3Coverage.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3CoverageJoin.cpp -o V3CoverageJoin.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Dead.cpp -o V3Dead.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Delayed.cpp -o V3Delayed.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Depth.cpp -o V3Depth.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DepthBlock.cpp -o V3DepthBlock.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Descope.cpp -o V3Descope.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Dfg.cpp -o V3Dfg.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgAstToDfg.cpp -o V3DfgAstToDfg.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgDecomposition.cpp -o V3DfgDecomposition.o
+  edit V3ParseBison_pretmp.h V3ParseBison.h
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_opt'
+make -C obj_opt       TGT=../../bin/verilator_bin -f ../Makefile_obj
+make[2]: Entering directory '/home/kevin/verilator/src/obj_opt'
+      Compile flags:  g++ -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC="" -DDEFENV_SYSTEMC_ARCH="" -DDEFENV_SYSTEMC_INCLUDE="" -DDEFENV_SYSTEMC_LIBDIR="" -DDEFENV_VERILATOR_ROOT="/home/kevin/verilator"
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../Verilator.cpp -o Verilator.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Active.cpp -o V3Active.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3ActiveTop.cpp -o V3ActiveTop.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgDfgToAst.cpp -o V3DfgDfgToAst.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgOptimizer.cpp -o V3DfgOptimizer.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Assert.cpp -o V3Assert.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgPasses.cpp -o V3DfgPasses.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgPeephole.cpp -o V3DfgPeephole.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DupFinder.cpp -o V3DupFinder.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3AssertPre.cpp -o V3AssertPre.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Ast.cpp -o V3Ast.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3AstNodes.cpp -o V3AstNodes.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Begin.cpp -o V3Begin.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Branch.cpp -o V3Branch.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Broken.cpp -o V3Broken.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3CCtors.cpp -o V3CCtors.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCBase.cpp -o V3EmitCBase.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCConstPool.cpp -o V3EmitCConstPool.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3CUse.cpp -o V3CUse.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Case.cpp -o V3Case.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCFunc.cpp -o V3EmitCFunc.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCHeaders.cpp -o V3EmitCHeaders.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Cast.cpp -o V3Cast.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCImp.cpp -o V3EmitCImp.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Class.cpp -o V3Class.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Clean.cpp -o V3Clean.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Clock.cpp -o V3Clock.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Combine.cpp -o V3Combine.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Common.cpp -o V3Common.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCInlines.cpp -o V3EmitCInlines.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCMain.cpp -o V3EmitCMain.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Config.cpp -o V3Config.o
+/usr/bin/python3 ../astgen -I .. --astdef V3AstNodeDType.h --astdef V3AstNodeExpr.h --astdef V3AstNodeOther.h --dfgdef V3DfgVertices.h V3Const.cpp
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCMake.cpp -o V3EmitCMake.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Coverage.cpp -o V3Coverage.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3CoverageJoin.cpp -o V3CoverageJoin.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Dead.cpp -o V3Dead.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Delayed.cpp -o V3Delayed.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Depth.cpp -o V3Depth.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DepthBlock.cpp -o V3DepthBlock.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Descope.cpp -o V3Descope.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Dfg.cpp -o V3Dfg.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgAstToDfg.cpp -o V3DfgAstToDfg.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgDecomposition.cpp -o V3DfgDecomposition.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgDfgToAst.cpp -o V3DfgDfgToAst.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCModel.cpp -o V3EmitCModel.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgOptimizer.cpp -o V3DfgOptimizer.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCSyms.cpp -o V3EmitCSyms.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitMk.cpp -o V3EmitMk.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitV.cpp -o V3EmitV.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitXml.cpp -o V3EmitXml.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgPasses.cpp -o V3DfgPasses.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DfgPeephole.cpp -o V3DfgPeephole.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3DupFinder.cpp -o V3DupFinder.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Error.cpp -o V3Error.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCBase.cpp -o V3EmitCBase.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCConstPool.cpp -o V3EmitCConstPool.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCFunc.cpp -o V3EmitCFunc.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCHeaders.cpp -o V3EmitCHeaders.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCImp.cpp -o V3EmitCImp.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCInlines.cpp -o V3EmitCInlines.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCMain.cpp -o V3EmitCMain.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCMake.cpp -o V3EmitCMake.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCModel.cpp -o V3EmitCModel.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitCSyms.cpp -o V3EmitCSyms.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitMk.cpp -o V3EmitMk.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Expand.cpp -o V3Expand.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitV.cpp -o V3EmitV.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3EmitXml.cpp -o V3EmitXml.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Error.cpp -o V3Error.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Expand.cpp -o V3Expand.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3File.cpp -o V3File.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3File.cpp -o V3File.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3FileLine.cpp -o V3FileLine.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Force.cpp -o V3Force.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Gate.cpp -o V3Gate.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3FileLine.cpp -o V3FileLine.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Force.cpp -o V3Force.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Gate.cpp -o V3Gate.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Global.cpp -o V3Global.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Global.cpp -o V3Global.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Graph.cpp -o V3Graph.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphAcyc.cpp -o V3GraphAcyc.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Graph.cpp -o V3Graph.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphAlg.cpp -o V3GraphAlg.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphPathChecker.cpp -o V3GraphPathChecker.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphAcyc.cpp -o V3GraphAcyc.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphTest.cpp -o V3GraphTest.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Hash.cpp -o V3Hash.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Hasher.cpp -o V3Hasher.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3HierBlock.cpp -o V3HierBlock.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Inline.cpp -o V3Inline.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Inst.cpp -o V3Inst.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3InstrCount.cpp -o V3InstrCount.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Life.cpp -o V3Life.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LifePost.cpp -o V3LifePost.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkCells.cpp -o V3LinkCells.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkDot.cpp -o V3LinkDot.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkInc.cpp -o V3LinkInc.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkJump.cpp -o V3LinkJump.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkLValue.cpp -o V3LinkLValue.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkLevel.cpp -o V3LinkLevel.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkParse.cpp -o V3LinkParse.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphAlg.cpp -o V3GraphAlg.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphPathChecker.cpp -o V3GraphPathChecker.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkResolve.cpp -o V3LinkResolve.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Localize.cpp -o V3Localize.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3MergeCond.cpp -o V3MergeCond.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Name.cpp -o V3Name.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3GraphTest.cpp -o V3GraphTest.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Hash.cpp -o V3Hash.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Number.cpp -o V3Number.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Hasher.cpp -o V3Hasher.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3HierBlock.cpp -o V3HierBlock.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3OptionParser.cpp -o V3OptionParser.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Options.cpp -o V3Options.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Inline.cpp -o V3Inline.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Order.cpp -o V3Order.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Os.cpp -o V3Os.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Param.cpp -o V3Param.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3ParseGrammar.cpp -o V3ParseGrammar.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Inst.cpp -o V3Inst.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3ParseImp.cpp -o V3ParseImp.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3InstrCount.cpp -o V3InstrCount.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Life.cpp -o V3Life.o
+/usr/bin/flex --version
+flex 2.6.4
+/usr/bin/flex -d -oV3Lexer_pregen.yy.cpp ../verilog.l
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Partition.cpp -o V3Partition.o
+/usr/bin/flex --version
+flex 2.6.4
+/usr/bin/flex -d -oV3PreLex_pregen.yy.cpp ../V3PreLex.l
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3PreShell.cpp -o V3PreShell.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Premit.cpp -o V3Premit.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3ProtectLib.cpp -o V3ProtectLib.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LifePost.cpp -o V3LifePost.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Randomize.cpp -o V3Randomize.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Reloop.cpp -o V3Reloop.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Sched.cpp -o V3Sched.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedAcyclic.cpp -o V3SchedAcyclic.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedPartition.cpp -o V3SchedPartition.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedReplicate.cpp -o V3SchedReplicate.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedTiming.cpp -o V3SchedTiming.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkCells.cpp -o V3LinkCells.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkDot.cpp -o V3LinkDot.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkInc.cpp -o V3LinkInc.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Scope.cpp -o V3Scope.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Scoreboard.cpp -o V3Scoreboard.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Slice.cpp -o V3Slice.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Split.cpp -o V3Split.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkJump.cpp -o V3LinkJump.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SplitAs.cpp -o V3SplitAs.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SplitVar.cpp -o V3SplitVar.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Stats.cpp -o V3Stats.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3StatsReport.cpp -o V3StatsReport.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkLValue.cpp -o V3LinkLValue.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3String.cpp -o V3String.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkLevel.cpp -o V3LinkLevel.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Subst.cpp -o V3Subst.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkParse.cpp -o V3LinkParse.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3TSP.cpp -o V3TSP.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Table.cpp -o V3Table.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3LinkResolve.cpp -o V3LinkResolve.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Task.cpp -o V3Task.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3ThreadPool.cpp -o V3ThreadPool.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Timing.cpp -o V3Timing.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Trace.cpp -o V3Trace.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3TraceDecl.cpp -o V3TraceDecl.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Tristate.cpp -o V3Tristate.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Undriven.cpp -o V3Undriven.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Localize.cpp -o V3Localize.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Unknown.cpp -o V3Unknown.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Unroll.cpp -o V3Unroll.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3VariableOrder.cpp -o V3VariableOrder.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Waiver.cpp -o V3Waiver.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3MergeCond.cpp -o V3MergeCond.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Width.cpp -o V3Width.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3WidthSel.cpp -o V3WidthSel.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c V3Const__gen.cpp -o V3Const__gen.o
+/usr/bin/python3 ../flexfix V3Lexer <V3Lexer_pregen.yy.cpp >V3Lexer.yy.cpp
+/usr/bin/python3 ../flexfix V3PreLex <V3PreLex_pregen.yy.cpp >V3PreLex.yy.cpp
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3ParseLex.cpp -o V3ParseLex.o
+g++   -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3PreProc.cpp -o V3PreProc.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Name.cpp -o V3Name.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Number.cpp -o V3Number.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3OptionParser.cpp -o V3OptionParser.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Options.cpp -o V3Options.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Order.cpp -o V3Order.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Os.cpp -o V3Os.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Param.cpp -o V3Param.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3ParseGrammar.cpp -o V3ParseGrammar.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3ParseImp.cpp -o V3ParseImp.o
+/usr/bin/flex --version
+flex 2.6.4
+/usr/bin/flex -d -oV3Lexer_pregen.yy.cpp ../verilog.l
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Partition.cpp -o V3Partition.o
+/usr/bin/flex --version
+flex 2.6.4
+/usr/bin/flex -d -oV3PreLex_pregen.yy.cpp ../V3PreLex.l
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3PreShell.cpp -o V3PreShell.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Premit.cpp -o V3Premit.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3ProtectLib.cpp -o V3ProtectLib.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Randomize.cpp -o V3Randomize.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Reloop.cpp -o V3Reloop.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Sched.cpp -o V3Sched.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedAcyclic.cpp -o V3SchedAcyclic.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedPartition.cpp -o V3SchedPartition.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedReplicate.cpp -o V3SchedReplicate.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SchedTiming.cpp -o V3SchedTiming.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Scope.cpp -o V3Scope.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Scoreboard.cpp -o V3Scoreboard.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Slice.cpp -o V3Slice.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Split.cpp -o V3Split.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SplitAs.cpp -o V3SplitAs.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3SplitVar.cpp -o V3SplitVar.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Stats.cpp -o V3Stats.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3StatsReport.cpp -o V3StatsReport.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3String.cpp -o V3String.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Subst.cpp -o V3Subst.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3TSP.cpp -o V3TSP.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Table.cpp -o V3Table.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Task.cpp -o V3Task.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3ThreadPool.cpp -o V3ThreadPool.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Timing.cpp -o V3Timing.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Trace.cpp -o V3Trace.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3TraceDecl.cpp -o V3TraceDecl.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Tristate.cpp -o V3Tristate.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Undriven.cpp -o V3Undriven.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Unknown.cpp -o V3Unknown.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Unroll.cpp -o V3Unroll.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3VariableOrder.cpp -o V3VariableOrder.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Waiver.cpp -o V3Waiver.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3Width.cpp -o V3Width.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c ../V3WidthSel.cpp -o V3WidthSel.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -c V3Const__gen.cpp -o V3Const__gen.o
+/usr/bin/python3 ../flexfix V3Lexer <V3Lexer_pregen.yy.cpp >V3Lexer.yy.cpp
+/usr/bin/python3 ../flexfix V3PreLex <V3PreLex_pregen.yy.cpp >V3PreLex.yy.cpp
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3PreProc.cpp -o V3PreProc.o
+g++   -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP  -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC=\"\" -DDEFENV_SYSTEMC_ARCH=\"\" -DDEFENV_SYSTEMC_INCLUDE=\"\" -DDEFENV_SYSTEMC_LIBDIR=\"\" -DDEFENV_VERILATOR_ROOT=\"/home/kevin/verilator\" -Wno-char-subscripts -Wno-unused -c ../V3ParseLex.cpp -o V3ParseLex.o
+      Linking ../../bin/verilator_bin_dbg...
+g++  -gz -static-libgcc -static-libstdc++ -Xlinker -gc-sections -o ../../bin/verilator_bin_dbg Verilator.o V3Active.o V3ActiveTop.o V3Assert.o V3AssertPre.o V3Ast.o V3AstNodes.o V3Begin.o V3Branch.o V3Broken.o V3CCtors.o V3CUse.o V3Case.o V3Cast.o V3Class.o V3Clean.o V3Clock.o V3Combine.o V3Common.o V3Config.o V3Const__gen.o V3Coverage.o V3CoverageJoin.o V3Dead.o V3Delayed.o V3Depth.o V3DepthBlock.o V3Descope.o V3Dfg.o V3DfgAstToDfg.o V3DfgDecomposition.o V3DfgDfgToAst.o V3DfgOptimizer.o V3DfgPasses.o V3DfgPeephole.o V3DupFinder.o V3EmitCBase.o V3EmitCConstPool.o V3EmitCFunc.o V3EmitCHeaders.o V3EmitCImp.o V3EmitCInlines.o V3EmitCMain.o V3EmitCMake.o V3EmitCModel.o V3EmitCSyms.o V3EmitMk.o V3EmitV.o V3EmitXml.o V3Error.o V3Expand.o V3File.o V3FileLine.o V3Force.o V3Gate.o V3Global.o V3Graph.o V3GraphAcyc.o V3GraphAlg.o V3GraphPathChecker.o V3GraphTest.o V3Hash.o V3Hasher.o V3HierBlock.o V3Inline.o V3Inst.o V3InstrCount.o V3Life.o V3LifePost.o V3LinkCells.o V3LinkDot.o V3LinkInc.o V3LinkJump.o V3LinkLValue.o V3LinkLevel.o V3LinkParse.o V3LinkResolve.o V3Localize.o V3MergeCond.o V3Name.o V3Number.o V3OptionParser.o V3Options.o V3Order.o V3Os.o V3Param.o V3ParseGrammar.o V3ParseImp.o V3ParseLex.o V3Partition.o V3PreProc.o V3PreShell.o V3Premit.o V3ProtectLib.o V3Randomize.o V3Reloop.o V3Sched.o V3SchedAcyclic.o V3SchedPartition.o V3SchedReplicate.o V3SchedTiming.o V3Scope.o V3Scoreboard.o V3Slice.o V3Split.o V3SplitAs.o V3SplitVar.o V3Stats.o V3StatsReport.o V3String.o V3Subst.o V3TSP.o V3Table.o V3Task.o V3ThreadPool.o V3Timing.o V3Trace.o V3TraceDecl.o V3Tristate.o V3Undriven.o V3Unknown.o V3Unroll.o V3VariableOrder.o V3Waiver.o V3Width.o V3WidthSel.o   -lpthread -lm
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+      Linking ../../bin/verilator_bin...
+g++  -static-libgcc -static-libstdc++ -Xlinker -gc-sections -o ../../bin/verilator_bin Verilator.o V3Active.o V3ActiveTop.o V3Assert.o V3AssertPre.o V3Ast.o V3AstNodes.o V3Begin.o V3Branch.o V3Broken.o V3CCtors.o V3CUse.o V3Case.o V3Cast.o V3Class.o V3Clean.o V3Clock.o V3Combine.o V3Common.o V3Config.o V3Const__gen.o V3Coverage.o V3CoverageJoin.o V3Dead.o V3Delayed.o V3Depth.o V3DepthBlock.o V3Descope.o V3Dfg.o V3DfgAstToDfg.o V3DfgDecomposition.o V3DfgDfgToAst.o V3DfgOptimizer.o V3DfgPasses.o V3DfgPeephole.o V3DupFinder.o V3EmitCBase.o V3EmitCConstPool.o V3EmitCFunc.o V3EmitCHeaders.o V3EmitCImp.o V3EmitCInlines.o V3EmitCMain.o V3EmitCMake.o V3EmitCModel.o V3EmitCSyms.o V3EmitMk.o V3EmitV.o V3EmitXml.o V3Error.o V3Expand.o V3File.o V3FileLine.o V3Force.o V3Gate.o V3Global.o V3Graph.o V3GraphAcyc.o V3GraphAlg.o V3GraphPathChecker.o V3GraphTest.o V3Hash.o V3Hasher.o V3HierBlock.o V3Inline.o V3Inst.o V3InstrCount.o V3Life.o V3LifePost.o V3LinkCells.o V3LinkDot.o V3LinkInc.o V3LinkJump.o V3LinkLValue.o V3LinkLevel.o V3LinkParse.o V3LinkResolve.o V3Localize.o V3MergeCond.o V3Name.o V3Number.o V3OptionParser.o V3Options.o V3Order.o V3Os.o V3Param.o V3ParseGrammar.o V3ParseImp.o V3ParseLex.o V3Partition.o V3PreProc.o V3PreShell.o V3Premit.o V3ProtectLib.o V3Randomize.o V3Reloop.o V3Sched.o V3SchedAcyclic.o V3SchedPartition.o V3SchedReplicate.o V3SchedTiming.o V3Scope.o V3Scoreboard.o V3Slice.o V3Split.o V3SplitAs.o V3SplitVar.o V3Stats.o V3StatsReport.o V3String.o V3Subst.o V3TSP.o V3Table.o V3Task.o V3ThreadPool.o V3Timing.o V3Trace.o V3TraceDecl.o V3Tristate.o V3Undriven.o V3Unknown.o V3Unroll.o V3VariableOrder.o V3Waiver.o V3Width.o V3WidthSel.o   -lpthread -lm
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_opt'
+make[1]: Leaving directory '/home/kevin/verilator/src'
+Build complete!
+
+Now type 'make test' to test.
+
+kevin@kevin:~/verilator$ sudo make install
+------------------------------------------------------------
+making verilator in src
+make -C src
+make[1]: Entering directory '/home/kevin/verilator/src'
+make -C obj_dbg -j 1  TGT=../../bin/verilator_bin_dbg VL_DEBUG=1 -f ../Makefile_obj serial
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+make[2]: Nothing to be done for 'serial'.
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+make -C obj_dbg       TGT=../../bin/verilator_bin_dbg VL_DEBUG=1 -f ../Makefile_obj
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+      Compile flags:  g++ -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC="" -DDEFENV_SYSTEMC_ARCH="" -DDEFENV_SYSTEMC_INCLUDE="" -DDEFENV_SYSTEMC_LIBDIR="" -DDEFENV_VERILATOR_ROOT="/usr/local/share/verilator"
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+make -C obj_dbg       TGT=../../bin/verilator_coverage_bin_dbg VL_DEBUG=1 VL_VLCOV=1 -f ../Makefile_obj serial_vlcov
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+make[2]: Nothing to be done for 'serial_vlcov'.
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+make -C obj_dbg       TGT=../../bin/verilator_coverage_bin_dbg VL_DEBUG=1 VL_VLCOV=1 -f ../Makefile_obj
+make[2]: Entering directory '/home/kevin/verilator/src/obj_dbg'
+      Compile flags:  g++ -Og -ggdb -gz -DVL_DEBUG -D_GLIBCXX_DEBUG -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC="" -DDEFENV_SYSTEMC_ARCH="" -DDEFENV_SYSTEMC_INCLUDE="" -DDEFENV_SYSTEMC_LIBDIR="" -DDEFENV_VERILATOR_ROOT="/usr/local/share/verilator"
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_dbg'
+make -C obj_opt -j 1  TGT=../../bin/verilator_bin -f ../Makefile_obj serial
+make[2]: Entering directory '/home/kevin/verilator/src/obj_opt'
+make[2]: Nothing to be done for 'serial'.
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_opt'
+make -C obj_opt       TGT=../../bin/verilator_bin -f ../Makefile_obj
+make[2]: Entering directory '/home/kevin/verilator/src/obj_opt'
+      Compile flags:  g++ -O3 -DVERILATOR_INTERNAL_ -MMD -I. -I.. -I.. -I../../include -I../../include -MP -faligned-new -Wno-unused-parameter -Wno-shadow -DDEFENV_SYSTEMC="" -DDEFENV_SYSTEMC_ARCH="" -DDEFENV_SYSTEMC_INCLUDE="" -DDEFENV_SYSTEMC_LIBDIR="" -DDEFENV_VERILATOR_ROOT="/usr/local/share/verilator"
+make[2]: Leaving directory '/home/kevin/verilator/src/obj_opt'
+make[1]: Leaving directory '/home/kevin/verilator/src'
+/bin/sh ./src/mkinstalldirs /usr/local/bin
+( cd ./bin ; /usr/bin/install -c verilator /usr/local/bin/verilator )
+( cd ./bin ; /usr/bin/install -c verilator_coverage /usr/local/bin/verilator_coverage )
+( cd ./bin ; /usr/bin/install -c verilator_gantt /usr/local/bin/verilator_gantt )
+( cd ./bin ; /usr/bin/install -c verilator_profcfunc /usr/local/bin/verilator_profcfunc )
+( cd bin ; /usr/bin/install -c verilator_bin /usr/local/bin/verilator_bin )
+( cd bin ; /usr/bin/install -c verilator_bin_dbg /usr/local/bin/verilator_bin_dbg )
+( cd bin ; /usr/bin/install -c verilator_coverage_bin_dbg /usr/local/bin/verilator_coverage_bin_dbg )
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/bin
+mkdir /usr/local/share/verilator
+mkdir /usr/local/share/verilator/bin
+( cd ./bin ; /usr/bin/install -c verilator_includer /usr/local/share/verilator/bin/verilator_includer )
+( cd ./bin ; /usr/bin/install -c verilator_ccache_report /usr/local/share/verilator/bin/verilator_ccache_report )
+( cd ./bin ; /usr/bin/install -c verilator_difftree /usr/local/share/verilator/bin/verilator_difftree )
+/bin/sh ./src/mkinstalldirs /usr/local/share/man/man1
+mkdir /usr/local/share/man/man1
+for p in verilator.1 verilator_coverage.1 verilator_gantt.1 verilator_profcfunc.1 ; do \
+  /usr/bin/install -c -m 644 $p /usr/local/share/man/man1/$p; \
+done
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/include/gtkwave
+mkdir /usr/local/share/verilator/include
+mkdir /usr/local/share/verilator/include/gtkwave
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/include/vltstd
+mkdir /usr/local/share/verilator/include/vltstd
+for p in include/verilated_config.h include/verilated.mk  ; do \
+  /usr/bin/install -c -m 644 $p /usr/local/share/verilator/$p; \
+done
+cd . \
+; for p in include/*.[chv]* include/*.sv include/gtkwave/*.[chv]* include/vltstd/*.[chv]*  ; do \
+  /usr/bin/install -c -m 644 $p /usr/local/share/verilator/$p; \
+done
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/make_hello_binary
+mkdir /usr/local/share/verilator/examples
+mkdir /usr/local/share/verilator/examples/make_hello_binary
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/make_hello_c
+mkdir /usr/local/share/verilator/examples/make_hello_c
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/make_hello_sc
+mkdir /usr/local/share/verilator/examples/make_hello_sc
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/make_tracing_c
+mkdir /usr/local/share/verilator/examples/make_tracing_c
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/make_tracing_sc
+mkdir /usr/local/share/verilator/examples/make_tracing_sc
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/make_protect_lib
+mkdir /usr/local/share/verilator/examples/make_protect_lib
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/cmake_hello_c
+mkdir /usr/local/share/verilator/examples/cmake_hello_c
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/cmake_hello_sc
+mkdir /usr/local/share/verilator/examples/cmake_hello_sc
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/cmake_tracing_c
+mkdir /usr/local/share/verilator/examples/cmake_tracing_c
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/cmake_tracing_sc
+mkdir /usr/local/share/verilator/examples/cmake_tracing_sc
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/cmake_protect_lib
+mkdir /usr/local/share/verilator/examples/cmake_protect_lib
+/bin/sh ./src/mkinstalldirs /usr/local/share/verilator/examples/xml_py
+mkdir /usr/local/share/verilator/examples/xml_py
+cd . \
+; for p in examples/*/*.[chv]* examples/*/CMakeLists.txt examples/*/Makefile* examples/*/vl_*  ; do \
+  /usr/bin/install -c -m 644 $p /usr/local/share/verilator/$p; \
+done
+/bin/sh ./src/mkinstalldirs /usr/local/share/pkgconfig
+mkdir /usr/local/share/pkgconfig
+/usr/bin/install -c -m 644 verilator.pc /usr/local/share/pkgconfig
+/usr/bin/install -c -m 644 verilator-config.cmake /usr/local/share/verilator
+/usr/bin/install -c -m 644 verilator-config-version.cmake /usr/local/share/verilator
+
+Installed binaries to /usr/local/bin/verilator
+Installed man to /usr/local/share/man/man1
+Installed examples to /usr/local/share/verilator/examples
+
+For documentation see 'man verilator' or 'verilator --help'
+For forums and to report bugs see https://verilator.org
 ```
