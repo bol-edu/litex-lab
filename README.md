@@ -1383,4 +1383,4 @@ Installed examples to /usr/local/share/verilator/examples
 
 For documentation see 'man verilator' or 'verilator --help'
 For forums and to report bugs see https://verilator.org
-```
+```console
