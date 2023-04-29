@@ -107,14 +107,14 @@ root@buildroot:~#
 
 Install OpenOCD (needed for hardware test)
 ```
-sudo apt install libtool automake pkg-config libusb-1.0-0-dev 
+sudo apt install libtool automake pkg-config libusb-1.0-0-dev -y
 git clone https://github.com/ntfreak/openocd.git
 cd openocd
 ./bootstrap
 ./configure --enable-ftdi
 sudo make install
 ```
-[Install OpenOCD.log](https://github.com/bol-edu/litex-lab/files/11359212/Install.OpenOCD.log)
+[Install OpenOCD.log](https://github.com/bol-edu/litex-lab/files/11359260/Install.OpenOCD.log)
 
 Build the kv260 bitstream
 ```
