@@ -57,7 +57,7 @@ export PATH=$PATH:~/.local/bin
 ```
 [Install litex python3 dependencies.log](https://github.com/bol-edu/litex-lab/files/11359136/Install.litex.python3.dependencies.log)
 
-## Install and run litex
+## Run Linux OS on VexRiscv soc with Verilator RTL simulator
 ```
 git clone https://github.com/litex-hub/linux-on-litex-vexriscv
 cd linux-on-litex-vexriscv
@@ -71,7 +71,7 @@ wget -O linux_2022_03_23.zip  https://github.com/litex-hub/linux-on-litex-vexris
 unzip linux_2022_03_23.zip -d ./images (enter y)
 ./sim.py
 ```
-[Install and run litex.log](https://github.com/bol-edu/litex-lab/files/11359143/Install.and.run.litex.log)
+[Run linux os on vexriscv soc with verilator rtl simulator.log](https://github.com/bol-edu/litex-lab/files/11359154/Run.linux.os.on.vexriscv.soc.with.verilator.rtl.simulator.log)
 
 ```console
 buildroot login: root
@@ -103,4 +103,4 @@ Built-in commands:
         trap true type ulimit umask unalias unset wait
 root@buildroot:~#
 ```
-
+## Port VexRiscv soc to Xilinx kv260 board
