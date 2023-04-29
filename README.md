@@ -24,6 +24,10 @@ More [introduction of LiteX](https://github.com/enjoy-digital/litex#welcome-to-l
 * https://github.com/litex-hub/linux-on-litex-vexriscv
 
 ## Setup Environment for LiteX
+* Install basic tools and dependencies
+* Compile and install latest Verilator
+* Install litex python3 dependencies
+
 Install basic tools and dependencies
 ```
 sudo apt update
@@ -1420,4 +1424,2546 @@ Installing collected packages: meson
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 Successfully installed meson-0.59.0
 kevin@kevin:~$ export PATH=$PATH:~/.local/bin
+```
+## Install and run litex
+```
+git clone https://github.com/litex-hub/linux-on-litex-vexriscv
+cd linux-on-litex-vexriscv
+wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
+chmod +x litex_setup.py
+./litex_setup.py --init --install --user --config=full
+./litex_setup.py --update
+sudo ./litex_setup.py --gcc=riscv (enter yes)
+~/litex-boards/litex_boards/targets/xilinx_kv260.py
+wget -O linux_2022_03_23.zip  https://github.com/litex-hub/linux-on-litex-vexriscv/files/8331338/linux_2022_03_23.zip
+unzip linux_2022_03_23.zip -d ./images (enter yes)
+./sim.py
+```
+```console
+kevin@kevin:~$ git clone https://github.com/litex-hub/linux-on-litex-vexriscv
+Cloning into 'linux-on-litex-vexriscv'...
+remote: Enumerating objects: 2685, done.
+remote: Counting objects: 100% (600/600), done.
+remote: Compressing objects: 100% (294/294), done.
+remote: Total 2685 (delta 352), reused 430 (delta 295), pack-reused 2085
+Receiving objects: 100% (2685/2685), 9.50 MiB | 8.46 MiB/s, done.
+Resolving deltas: 100% (1497/1497), done.
+kevin@kevin:~$ cd linux-on-litex-vexriscv
+kevin@kevin:~/linux-on-litex-vexriscv$ wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
+--2023-04-29 12:48:23--  https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 19112 (19K) [text/plain]
+Saving to: ‘litex_setup.py’
+
+litex_setup.py                          100%[=============================================================================>]  18.66K  --.-KB/s    in 0.005s
+
+2023-04-29 12:48:23 (3.66 MB/s) - ‘litex_setup.py’ saved [19112/19112]
+
+kevin@kevin:~/linux-on-litex-vexriscv$ chmod +x litex_setup.py
+kevin@kevin:~/linux-on-litex-vexriscv$ ./litex_setup.py --init --install --user --config=full
+          __   _ __      _  __
+         / /  (_) /____ | |/_/
+        / /__/ / __/ -_)>  <
+       /____/_/\__/\__/_/|_|
+     Build your hardware, easily!
+          LiteX Setup utility.
+
+[   0.003] LiteX Setup auto-update...
+[   0.496] LiteX Setup is up to date.
+[   0.497] Initializing Git repositories...
+[   0.497] --------------------------------
+[   0.497] Cloning migen Git repository...
+Cloning into 'migen'...
+remote: Enumerating objects: 12641, done.
+remote: Counting objects: 100% (210/210), done.
+remote: Compressing objects: 100% (100/100), done.
+remote: Total 12641 (delta 142), reused 160 (delta 110), pack-reused 12431
+Receiving objects: 100% (12641/12641), 3.09 MiB | 9.22 MiB/s, done.
+Resolving deltas: 100% (8222/8222), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[   1.838] Cloning pythondata-software-picolibc Git repository...
+Cloning into 'pythondata-software-picolibc'...
+remote: Enumerating objects: 734, done.
+remote: Counting objects: 100% (266/266), done.
+remote: Compressing objects: 100% (194/194), done.
+remote: Total 734 (delta 122), reused 215 (delta 72), pack-reused 468
+Receiving objects: 100% (734/734), 132.85 KiB | 1.41 MiB/s, done.
+Resolving deltas: 100% (331/331), done.
+Submodule 'pythondata_software_picolibc/data' (https://github.com/picolibc/picolibc) registered for path 'pythondata_software_picolibc/data'
+Cloning into '/home/kevin/pythondata-software-picolibc/pythondata_software_picolibc/data'...
+remote: Enumerating objects: 225975, done.
+remote: Counting objects: 100% (165/165), done.
+remote: Compressing objects: 100% (103/103), done.
+remote: Total 225975 (delta 75), reused 117 (delta 62), pack-reused 225810
+Receiving objects: 100% (225975/225975), 134.40 MiB | 16.37 MiB/s, done.
+Resolving deltas: 100% (180483/180483), done.
+Submodule path 'pythondata_software_picolibc/data': checked out 'f165dc22f1f67e3e8bdc8edf750ff7dc596de2ff'
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  25.034] Cloning pythondata-software-compiler_rt Git repository...
+Cloning into 'pythondata-software-compiler_rt'...
+remote: Enumerating objects: 51970, done.
+remote: Counting objects: 100% (93/93), done.
+remote: Compressing objects: 100% (73/73), done.
+remote: Total 51970 (delta 53), reused 58 (delta 19), pack-reused 51877
+Receiving objects: 100% (51970/51970), 8.46 MiB | 11.78 MiB/s, done.
+Resolving deltas: 100% (42889/42889), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  27.755] Cloning litex Git repository...
+Cloning into 'litex'...
+remote: Enumerating objects: 61785, done.
+remote: Counting objects: 100% (61785/61785), done.
+remote: Compressing objects: 100% (17783/17783), done.
+remote: Total 61785 (delta 43074), reused 61579 (delta 43006), pack-reused 0
+Receiving objects: 100% (61785/61785), 15.50 MiB | 15.13 MiB/s, done.
+Resolving deltas: 100% (43074/43074), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  30.412] Cloning liteeth Git repository...
+Cloning into 'liteeth'...
+remote: Enumerating objects: 3241, done.
+remote: Counting objects: 100% (973/973), done.
+remote: Compressing objects: 100% (172/172), done.
+remote: Total 3241 (delta 863), reused 850 (delta 797), pack-reused 2268
+Receiving objects: 100% (3241/3241), 1.11 MiB | 5.11 MiB/s, done.
+Resolving deltas: 100% (2308/2308), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  31.485] Cloning litedram Git repository...
+Cloning into 'litedram'...
+remote: Enumerating objects: 8253, done.
+remote: Counting objects: 100% (8253/8253), done.
+remote: Compressing objects: 100% (2126/2126), done.
+remote: Total 8253 (delta 6113), reused 8160 (delta 6086), pack-reused 0
+Receiving objects: 100% (8253/8253), 3.28 MiB | 9.34 MiB/s, done.
+Resolving deltas: 100% (6113/6113), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  34.039] Cloning litepcie Git repository...
+Cloning into 'litepcie'...
+remote: Enumerating objects: 4758, done.
+remote: Counting objects: 100% (1025/1025), done.
+remote: Compressing objects: 100% (299/299), done.
+remote: Total 4758 (delta 744), reused 918 (delta 703), pack-reused 3733
+Receiving objects: 100% (4758/4758), 1.46 MiB | 6.40 MiB/s, done.
+Resolving deltas: 100% (3225/3225), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  35.155] Cloning litesata Git repository...
+Cloning into 'litesata'...
+remote: Enumerating objects: 2295, done.
+remote: Counting objects: 100% (628/628), done.
+remote: Compressing objects: 100% (199/199), done.
+remote: Total 2295 (delta 436), reused 617 (delta 426), pack-reused 1667
+Receiving objects: 100% (2295/2295), 1.13 MiB | 5.01 MiB/s, done.
+Resolving deltas: 100% (1521/1521), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  36.192] Cloning litesdcard Git repository...
+Cloning into 'litesdcard'...
+remote: Enumerating objects: 1990, done.
+remote: Counting objects: 100% (132/132), done.
+remote: Compressing objects: 100% (58/58), done.
+remote: Total 1990 (delta 74), reused 124 (delta 72), pack-reused 1858
+Receiving objects: 100% (1990/1990), 7.34 MiB | 12.78 MiB/s, done.
+Resolving deltas: 100% (1270/1270), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  37.646] Cloning liteiclink Git repository...
+Cloning into 'liteiclink'...
+remote: Enumerating objects: 2419, done.
+remote: Counting objects: 100% (135/135), done.
+remote: Compressing objects: 100% (90/90), done.
+remote: Total 2419 (delta 81), reused 80 (delta 41), pack-reused 2284
+Receiving objects: 100% (2419/2419), 547.97 KiB | 3.01 MiB/s, done.
+Resolving deltas: 100% (1626/1626), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  38.660] Cloning litescope Git repository...
+Cloning into 'litescope'...
+remote: Enumerating objects: 1219, done.
+remote: Counting objects: 100% (55/55), done.
+remote: Compressing objects: 100% (37/37), done.
+remote: Total 1219 (delta 21), reused 34 (delta 12), pack-reused 1164
+Receiving objects: 100% (1219/1219), 589.66 KiB | 3.26 MiB/s, done.
+Resolving deltas: 100% (639/639), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  39.651] Cloning litejesd204b Git repository...
+Cloning into 'litejesd204b'...
+remote: Enumerating objects: 1948, done.
+remote: Counting objects: 100% (187/187), done.
+remote: Compressing objects: 100% (88/88), done.
+remote: Total 1948 (delta 106), reused 173 (delta 95), pack-reused 1761
+Receiving objects: 100% (1948/1948), 482.85 KiB | 2.77 MiB/s, done.
+Resolving deltas: 100% (1290/1290), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  40.619] Cloning litespi Git repository...
+Cloning into 'litespi'...
+remote: Enumerating objects: 854, done.
+remote: Counting objects: 100% (247/247), done.
+remote: Compressing objects: 100% (111/111), done.
+remote: Total 854 (delta 178), reused 169 (delta 133), pack-reused 607
+Receiving objects: 100% (854/854), 204.00 KiB | 1.85 MiB/s, done.
+Resolving deltas: 100% (529/529), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  41.566] Cloning valentyusb Git repository...
+Cloning into 'valentyusb'...
+remote: Enumerating objects: 3073, done.
+remote: Counting objects: 100% (33/33), done.
+remote: Compressing objects: 100% (19/19), done.
+remote: Total 3073 (delta 14), reused 29 (delta 14), pack-reused 3040
+Receiving objects: 100% (3073/3073), 747.23 KiB | 3.79 MiB/s, done.
+Resolving deltas: 100% (1989/1989), done.
+Branch 'hw_cdc_eptri' set up to track remote branch 'hw_cdc_eptri' from 'origin'.
+Switched to a new branch 'hw_cdc_eptri'
+[  42.612] Cloning litex-boards Git repository...
+Cloning into 'litex-boards'...
+remote: Enumerating objects: 13329, done.
+remote: Counting objects: 100% (552/552), done.
+remote: Compressing objects: 100% (180/180), done.
+remote: Total 13329 (delta 407), reused 469 (delta 372), pack-reused 12777
+Receiving objects: 100% (13329/13329), 3.62 MiB | 10.29 MiB/s, done.
+Resolving deltas: 100% (10367/10367), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  44.011] Cloning pythondata-misc-tapcfg Git repository...
+Cloning into 'pythondata-misc-tapcfg'...
+remote: Enumerating objects: 2874, done.
+remote: Counting objects: 100% (296/296), done.
+remote: Compressing objects: 100% (104/104), done.
+remote: Total 2874 (delta 184), reused 287 (delta 175), pack-reused 2578
+Receiving objects: 100% (2874/2874), 647.06 KiB | 3.50 MiB/s, done.
+Resolving deltas: 100% (1891/1891), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  45.027] Cloning pythondata-misc-usb_ohci Git repository...
+Cloning into 'pythondata-misc-usb_ohci'...
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 19 (delta 2), reused 19 (delta 2), pack-reused 0
+Unpacking objects: 100% (19/19), 43.20 KiB | 465.00 KiB/s, done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  45.849] Cloning pythondata-cpu-lm32 Git repository...
+Cloning into 'pythondata-cpu-lm32'...
+remote: Enumerating objects: 820, done.
+remote: Counting objects: 100% (76/76), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 820 (delta 65), reused 62 (delta 53), pack-reused 744
+Receiving objects: 100% (820/820), 245.63 KiB | 1.79 MiB/s, done.
+Resolving deltas: 100% (474/474), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  46.819] Cloning pythondata-cpu-mor1kx Git repository...
+Cloning into 'pythondata-cpu-mor1kx'...
+remote: Enumerating objects: 4939, done.
+remote: Counting objects: 100% (923/923), done.
+remote: Compressing objects: 100% (339/339), done.
+remote: Total 4939 (delta 526), reused 906 (delta 509), pack-reused 4016
+Receiving objects: 100% (4939/4939), 1.84 MiB | 6.54 MiB/s, done.
+Resolving deltas: 100% (2853/2853), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  48.032] Cloning pythondata-cpu-marocchino Git repository...
+Cloning into 'pythondata-cpu-marocchino'...
+remote: Enumerating objects: 541, done.
+remote: Counting objects: 100% (541/541), done.
+remote: Compressing objects: 100% (199/199), done.
+remote: Total 541 (delta 316), reused 518 (delta 293), pack-reused 0
+Receiving objects: 100% (541/541), 368.30 KiB | 2.63 MiB/s, done.
+Resolving deltas: 100% (316/316), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  49.024] Cloning pythondata-cpu-microwatt Git repository...
+Cloning into 'pythondata-cpu-microwatt'...
+remote: Enumerating objects: 11922, done.
+remote: Counting objects: 100% (3778/3778), done.
+remote: Compressing objects: 100% (1356/1356), done.
+remote: Total 11922 (delta 2408), reused 3712 (delta 2345), pack-reused 8144
+Receiving objects: 100% (11922/11922), 68.38 MiB | 16.46 MiB/s, done.
+Resolving deltas: 100% (7164/7164), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Note: switching to 'c69953aff92'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at c69953a Merge commit '7d928200b81851c6a0ead589297b357dcdf762f2'
+[  56.338] Cloning pythondata-cpu-blackparrot Git repository...
+Cloning into 'pythondata-cpu-blackparrot'...
+remote: Enumerating objects: 26128, done.
+remote: Counting objects: 100% (3365/3365), done.
+remote: Compressing objects: 100% (1759/1759), done.
+remote: Total 26128 (delta 1520), reused 3334 (delta 1516), pack-reused 22763
+Receiving objects: 100% (26128/26128), 25.15 MiB | 15.10 MiB/s, done.
+Resolving deltas: 100% (17833/17833), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  60.247] Cloning pythondata-cpu-cv32e40p Git repository...
+Cloning into 'pythondata-cpu-cv32e40p'...
+remote: Enumerating objects: 6242, done.
+remote: Counting objects: 100% (228/228), done.
+remote: Compressing objects: 100% (72/72), done.
+remote: Total 6242 (delta 141), reused 226 (delta 140), pack-reused 6014
+Receiving objects: 100% (6242/6242), 3.22 MiB | 10.10 MiB/s, done.
+Resolving deltas: 100% (4420/4420), done.
+Submodule 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew' (https://github.com/antmicro/fpnew.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew'
+Submodule 'pythondata_cpu_cv32e40p/system_verilog/rtl/riscv-dbg' (https://github.com/antmicro/riscv-dbg.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/riscv-dbg'
+Submodule 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger' (https://github.com/antmicro/trace_debugger.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger'
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew'...
+remote: Enumerating objects: 1401, done.
+remote: Counting objects: 100% (206/206), done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 1401 (delta 195), reused 188 (delta 188), pack-reused 1195
+Receiving objects: 100% (1401/1401), 668.81 KiB | 3.61 MiB/s, done.
+Resolving deltas: 100% (1004/1004), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/riscv-dbg'...
+remote: Enumerating objects: 880, done.
+remote: Counting objects: 100% (251/251), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 880 (delta 234), reused 231 (delta 231), pack-reused 629
+Receiving objects: 100% (880/880), 309.81 KiB | 2.15 MiB/s, done.
+Resolving deltas: 100% (562/562), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger'...
+remote: Enumerating objects: 2946, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 2946 (delta 4), reused 4 (delta 1), pack-reused 2934
+Receiving objects: 100% (2946/2946), 7.04 MiB | 8.31 MiB/s, done.
+Resolving deltas: 100% (2061/2061), done.
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew': checked out '855bb82b6e85772fc290fa8b9c14fdd8f1b16be7'
+Submodule 'src-sv/common_cells' (https://github.com/pulp-platform/common_cells.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/src/common_cells'
+Submodule 'src-sv/fpu_div_sqrt_mvp' (https://github.com/pulp-platform/fpu_div_sqrt_mvp.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/src/fpu_div_sqrt_mvp'
+Submodule 'tb/flexfloat' (https://github.com/oprecomp/flexfloat.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/tb/flexfloat'
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/src/common_cells'...
+remote: Enumerating objects: 2709, done.
+remote: Counting objects: 100% (575/575), done.
+remote: Compressing objects: 100% (222/222), done.
+remote: Total 2709 (delta 436), reused 420 (delta 352), pack-reused 2134
+Receiving objects: 100% (2709/2709), 762.01 KiB | 4.07 MiB/s, done.
+Resolving deltas: 100% (1836/1836), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/src/fpu_div_sqrt_mvp'...
+remote: Enumerating objects: 210, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 210 (delta 6), reused 10 (delta 3), pack-reused 192
+Receiving objects: 100% (210/210), 775.64 KiB | 3.80 MiB/s, done.
+Resolving deltas: 100% (127/127), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/tb/flexfloat'...
+remote: Enumerating objects: 206, done.
+remote: Counting objects: 100% (63/63), done.
+remote: Compressing objects: 100% (38/38), done.
+remote: Total 206 (delta 25), reused 41 (delta 16), pack-reused 143
+Receiving objects: 100% (206/206), 88.67 KiB | 1.17 MiB/s, done.
+Resolving deltas: 100% (90/90), done.
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/src/common_cells': checked out '790f2385c01c83022474eede55809666209216e3'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/src/fpu_div_sqrt_mvp': checked out '83a601f97934ed5e06d737b9c80d98b08867c5fa'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/fpnew/tb/flexfloat': checked out '28be2d4fbf41b38fc37763bb6e90a1c88f6aaa61'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/riscv-dbg': checked out '6d38d957b036231db668666255e938c91b7ce424'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger': checked out '0aafa398e208ad79826407e3805642987287cfae'
+Submodule 'rtl/axi' (https://github.com/pulp-platform/axi.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/axi'
+Submodule 'rtl/common_cells' (https://github.com/pulp-platform/common_cells.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/common_cells'
+Submodule 'rtl/tech_cells_generic' (https://github.com/pulp-platform/tech_cells_generic.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/tech_cells_generic'
+Submodule 'trdb' (https://github.com/pulp-platform/trdb.git) registered for path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/trdb'
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/axi'...
+remote: Enumerating objects: 10145, done.
+remote: Counting objects: 100% (1841/1841), done.
+remote: Compressing objects: 100% (228/228), done.
+remote: Total 10145 (delta 1697), reused 1669 (delta 1610), pack-reused 8304
+Receiving objects: 100% (10145/10145), 6.00 MiB | 14.96 MiB/s, done.
+Resolving deltas: 100% (7405/7405), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/common_cells'...
+remote: Enumerating objects: 2709, done.
+remote: Counting objects: 100% (564/564), done.
+remote: Compressing objects: 100% (217/217), done.
+remote: Total 2709 (delta 426), reused 414 (delta 346), pack-reused 2145
+Receiving objects: 100% (2709/2709), 763.46 KiB | 4.34 MiB/s, done.
+Resolving deltas: 100% (1836/1836), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/tech_cells_generic'...
+remote: Enumerating objects: 525, done.
+remote: Counting objects: 100% (198/198), done.
+remote: Compressing objects: 100% (117/117), done.
+remote: Total 525 (delta 100), reused 162 (delta 81), pack-reused 327
+Receiving objects: 100% (525/525), 110.99 KiB | 1.32 MiB/s, done.
+Resolving deltas: 100% (307/307), done.
+Cloning into '/home/kevin/pythondata-cpu-cv32e40p/pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/trdb'...
+remote: Enumerating objects: 1504, done.
+remote: Total 1504 (delta 0), reused 0 (delta 0), pack-reused 1504
+Receiving objects: 100% (1504/1504), 6.11 MiB | 7.17 MiB/s, done.
+Resolving deltas: 100% (939/939), done.
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/axi': checked out '56440b0aad762cbfe2979b71e73f848d90b110d6'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/common_cells': checked out '5b7021208a3ff818a617b497c5b5564f412fe0a8'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/rtl/tech_cells_generic': checked out '0c5b6089c3d850843b72a9d1120414137976d746'
+Submodule path 'pythondata_cpu_cv32e40p/system_verilog/rtl/trace_debugger/trdb': checked out '5bbece538796a170ae5ae78310608383f1823ad1'
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  74.754] Cloning pythondata-cpu-cv32e41p Git repository...
+Cloning into 'pythondata-cpu-cv32e41p'...
+remote: Enumerating objects: 9592, done.
+remote: Counting objects: 100% (9592/9592), done.
+remote: Compressing objects: 100% (2461/2461), done.
+remote: Total 9592 (delta 7013), reused 9578 (delta 6999), pack-reused 0
+Receiving objects: 100% (9592/9592), 5.51 MiB | 10.62 MiB/s, done.
+Resolving deltas: 100% (7013/7013), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  76.567] Cloning pythondata-cpu-cva5 Git repository...
+Cloning into 'pythondata-cpu-cva5'...
+remote: Enumerating objects: 3992, done.
+remote: Counting objects: 100% (3992/3992), done.
+remote: Compressing objects: 100% (825/825), done.
+remote: Total 3992 (delta 3118), reused 3977 (delta 3103), pack-reused 0
+Receiving objects: 100% (3992/3992), 1.29 MiB | 5.24 MiB/s, done.
+Resolving deltas: 100% (3118/3118), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[  77.723] Cloning pythondata-cpu-cva6 Git repository...
+Cloning into 'pythondata-cpu-cva6'...
+remote: Enumerating objects: 16201, done.
+remote: Counting objects: 100% (1430/1430), done.
+remote: Compressing objects: 100% (1027/1027), done.
+remote: Total 16201 (delta 473), reused 1249 (delta 352), pack-reused 14771
+Receiving objects: 100% (16201/16201), 37.01 MiB | 17.91 MiB/s, done.
+Resolving deltas: 100% (11266/11266), done.
+Submodule 'pythondata_cpu_cva6/system_verilog/common/submodules/common_cells' (https://github.com/pulp-platform/common_cells.git) registered for path 'pythondata_cpu_cva6/system_verilog/common/submodules/common_cells'
+Submodule 'pythondata_cpu_cva6/system_verilog/core/fpu' (https://github.com/pulp-platform/fpnew.git) registered for path 'pythondata_cpu_cva6/system_verilog/core/fpu'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/axi' (https://github.com/pulp-platform/axi.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/axi'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/axi_mem_if' (https://github.com/pulp-platform/axi_mem_if.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/axi_mem_if'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_node' (https://github.com/pulp-platform/apb_node.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_node'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_timer' (https://github.com/pulp-platform/apb_timer.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_timer'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_uart' (https://github.com/pulp-platform/apb_uart.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_uart'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/ariane-ethernet' (https://github.com/lowRISC/ariane-ethernet.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/ariane-ethernet'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi2apb' (https://github.com/pulp-platform/axi2apb.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi2apb'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi_slice' (https://github.com/pulp-platform/axi_slice.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi_slice'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/register_interface' (https://github.com/pulp-platform/register_interface.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/register_interface'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/riscv-dbg' (https://github.com/pulp-platform/riscv-dbg.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/riscv-dbg'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/rv_plic' (https://github.com/pulp-platform/rv_plic.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/rv_plic'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/src/axi_riscv_atomics' (https://github.com/pulp-platform/axi_riscv_atomics.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/src/axi_riscv_atomics'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/src/tech_cells_generic' (https://github.com/pulp-platform/tech_cells_generic.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/src/tech_cells_generic'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/tb/common_verification' (https://github.com/pulp-platform/common_verification.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/tb/common_verification'
+Submodule 'pythondata_cpu_cva6/system_verilog/corev_apu/tb/dromajo' (https://github.com/kabylkas/dromajo.git) registered for path 'pythondata_cpu_cva6/system_verilog/corev_apu/tb/dromajo'
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/common/submodules/common_cells'...
+remote: Enumerating objects: 2709, done.
+remote: Counting objects: 100% (577/577), done.
+remote: Compressing objects: 100% (223/223), done.
+remote: Total 2709 (delta 437), reused 421 (delta 353), pack-reused 2132
+Receiving objects: 100% (2709/2709), 762.56 KiB | 4.17 MiB/s, done.
+Resolving deltas: 100% (1836/1836), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/core/fpu'...
+remote: Enumerating objects: 2141, done.
+remote: Counting objects: 100% (457/457), done.
+remote: Compressing objects: 100% (134/134), done.
+remote: Total 2141 (delta 364), reused 375 (delta 317), pack-reused 1684
+Receiving objects: 100% (2141/2141), 6.60 MiB | 12.42 MiB/s, done.
+Resolving deltas: 100% (1507/1507), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/axi'...
+remote: Enumerating objects: 10145, done.
+remote: Counting objects: 100% (1813/1813), done.
+remote: Compressing objects: 100% (223/223), done.
+remote: Total 10145 (delta 1672), reused 1647 (delta 1587), pack-reused 8332
+Receiving objects: 100% (10145/10145), 6.03 MiB | 14.15 MiB/s, done.
+Resolving deltas: 100% (7404/7404), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/axi_mem_if'...
+remote: Enumerating objects: 164, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 164 (delta 0), reused 1 (delta 0), pack-reused 160
+Receiving objects: 100% (164/164), 67.12 KiB | 1.32 MiB/s, done.
+Resolving deltas: 100% (79/79), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_node'...
+remote: Enumerating objects: 80, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 80 (delta 1), reused 5 (delta 1), pack-reused 73
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_timer'...
+remote: Enumerating objects: 74, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 74 (delta 1), reused 7 (delta 1), pack-reused 64
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_uart'...
+remote: Enumerating objects: 106, done.
+remote: Counting objects: 100% (51/51), done.
+remote: Compressing objects: 100% (37/37), done.
+remote: Total 106 (delta 25), reused 32 (delta 13), pack-reused 55
+Receiving objects: 100% (106/106), 63.37 KiB | 1.29 MiB/s, done.
+Resolving deltas: 100% (54/54), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/ariane-ethernet'...
+remote: Enumerating objects: 103, done.
+remote: Total 103 (delta 0), reused 0 (delta 0), pack-reused 103
+Receiving objects: 100% (103/103), 44.16 KiB | 1.03 MiB/s, done.
+Resolving deltas: 100% (65/65), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi2apb'...
+remote: Enumerating objects: 223, done.
+remote: Total 223 (delta 0), reused 0 (delta 0), pack-reused 223
+Receiving objects: 100% (223/223), 77.72 KiB | 1.49 MiB/s, done.
+Resolving deltas: 100% (131/131), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi_slice'...
+remote: Enumerating objects: 147, done.
+remote: Total 147 (delta 0), reused 0 (delta 0), pack-reused 147
+Receiving objects: 100% (147/147), 44.89 KiB | 581.00 KiB/s, done.
+Resolving deltas: 100% (86/86), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/register_interface'...
+remote: Enumerating objects: 776, done.
+remote: Counting objects: 100% (272/272), done.
+remote: Compressing objects: 100% (159/159), done.
+remote: Total 776 (delta 132), reused 195 (delta 101), pack-reused 504
+Receiving objects: 100% (776/776), 468.93 KiB | 2.66 MiB/s, done.
+Resolving deltas: 100% (385/385), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/riscv-dbg'...
+remote: Enumerating objects: 1377, done.
+remote: Counting objects: 100% (360/360), done.
+remote: Compressing objects: 100% (113/113), done.
+remote: Total 1377 (delta 279), reused 249 (delta 247), pack-reused 1017
+Receiving objects: 100% (1377/1377), 457.27 KiB | 1.47 MiB/s, done.
+Resolving deltas: 100% (903/903), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/rv_plic'...
+remote: Enumerating objects: 38, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 38 (delta 12), reused 6 (delta 6), pack-reused 17
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/src/axi_riscv_atomics'...
+remote: Enumerating objects: 652, done.
+remote: Counting objects: 100% (86/86), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 652 (delta 73), reused 63 (delta 60), pack-reused 566
+Receiving objects: 100% (652/652), 284.49 KiB | 2.09 MiB/s, done.
+Resolving deltas: 100% (444/444), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/src/tech_cells_generic'...
+remote: Enumerating objects: 525, done.
+remote: Counting objects: 100% (198/198), done.
+remote: Compressing objects: 100% (117/117), done.
+remote: Total 525 (delta 100), reused 162 (delta 81), pack-reused 327
+Receiving objects: 100% (525/525), 110.99 KiB | 1.39 MiB/s, done.
+Resolving deltas: 100% (307/307), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/tb/common_verification'...
+remote: Enumerating objects: 209, done.
+remote: Counting objects: 100% (93/93), done.
+remote: Compressing objects: 100% (63/63), done.
+remote: Total 209 (delta 50), reused 55 (delta 24), pack-reused 116
+Receiving objects: 100% (209/209), 55.34 KiB | 1.32 MiB/s, done.
+Resolving deltas: 100% (112/112), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/corev_apu/tb/dromajo'...
+remote: Enumerating objects: 2066, done.
+remote: Counting objects: 100% (713/713), done.
+remote: Compressing objects: 100% (45/45), done.
+remote: Total 2066 (delta 675), reused 671 (delta 668), pack-reused 1353
+Receiving objects: 100% (2066/2066), 1.91 MiB | 7.01 MiB/s, done.
+Resolving deltas: 100% (1480/1480), done.
+Submodule path 'pythondata_cpu_cva6/system_verilog/common/submodules/common_cells': checked out 'dc555643226419b7a602f0aa39d449545ea4c1f2'
+Submodule path 'pythondata_cpu_cva6/system_verilog/core/fpu': checked out '79f75e0a0fdab6ebc3840a14077c39f4934321fe'
+Submodule 'src-sv/common_cells' (https://github.com/pulp-platform/common_cells.git) registered for path 'pythondata_cpu_cva6/system_verilog/core/fpu/src/common_cells'
+Submodule 'src-sv/fpu_div_sqrt_mvp' (https://github.com/pulp-platform/fpu_div_sqrt_mvp.git) registered for path 'pythondata_cpu_cva6/system_verilog/core/fpu/src/fpu_div_sqrt_mvp'
+Submodule 'tb/flexfloat' (https://github.com/oprecomp/flexfloat.git) registered for path 'pythondata_cpu_cva6/system_verilog/core/fpu/tb/flexfloat'
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/core/fpu/src/common_cells'...
+remote: Enumerating objects: 2709, done.
+remote: Counting objects: 100% (564/564), done.
+remote: Compressing objects: 100% (217/217), done.
+remote: Total 2709 (delta 426), reused 414 (delta 346), pack-reused 2145
+Receiving objects: 100% (2709/2709), 763.46 KiB | 3.96 MiB/s, done.
+Resolving deltas: 100% (1836/1836), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/core/fpu/src/fpu_div_sqrt_mvp'...
+remote: Enumerating objects: 210, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 210 (delta 6), reused 10 (delta 3), pack-reused 192
+Receiving objects: 100% (210/210), 775.64 KiB | 2.28 MiB/s, done.
+Resolving deltas: 100% (127/127), done.
+Cloning into '/home/kevin/pythondata-cpu-cva6/pythondata_cpu_cva6/system_verilog/core/fpu/tb/flexfloat'...
+remote: Enumerating objects: 206, done.
+remote: Counting objects: 100% (63/63), done.
+remote: Compressing objects: 100% (38/38), done.
+remote: Total 206 (delta 25), reused 41 (delta 16), pack-reused 143
+Receiving objects: 100% (206/206), 88.67 KiB | 1.11 MiB/s, done.
+Resolving deltas: 100% (90/90), done.
+Submodule path 'pythondata_cpu_cva6/system_verilog/core/fpu/src/common_cells': checked out '790f2385c01c83022474eede55809666209216e3'
+Submodule path 'pythondata_cpu_cva6/system_verilog/core/fpu/src/fpu_div_sqrt_mvp': checked out '83a601f97934ed5e06d737b9c80d98b08867c5fa'
+Submodule path 'pythondata_cpu_cva6/system_verilog/core/fpu/tb/flexfloat': checked out '28be2d4fbf41b38fc37763bb6e90a1c88f6aaa61'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/axi': checked out '697f13ff67153a5243e347f2d1992a125018b6c2'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/axi_mem_if': checked out 'b494701501886ad71ba0c128560cc371610bcf1a'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_node': checked out '157e5f00a37440d53f2e5b3aabfc9d454530e688'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_timer': checked out '6c84f69d2e92bd766f609b5dd47ece723359bd24'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/apb_uart': checked out 'ac3461ce23832e02903b9d2d7d4edd7fcb89bd92'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/ariane-ethernet': checked out '6a5436bf110f83ebb13119dbd82650ccd8f947c9'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi2apb': checked out '53e7b9f1b16e3f4d4aadc8fbf880d05879f54fe8'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/fpga/src/axi_slice': checked out 'aae8ca49dcfbfa8e44e1938a2e4a768db83006cb'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/register_interface': checked out '73de8e51b79f416350229b1d2420b2c527e002b8'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/riscv-dbg': checked out 'e19d69efe7d7e4da6c25ed91d5e7f501ab52dd68'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/rv_plic': checked out '5b5c5a4c1c15c3d7bb833071d344b2c2bc5f599d'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/src/axi_riscv_atomics': checked out '550881f12e22dfae405612fc1df6368f4c003e68'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/src/tech_cells_generic': checked out 'b2a68114302af1d8191ddf34ea0e07b471911866'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/tb/common_verification': checked out 'a1e569119cdf2d25cecceee4016acd98030f6886'
+Submodule path 'pythondata_cpu_cva6/system_verilog/corev_apu/tb/dromajo': checked out '8acade8725d5e6cbf373304b348a8d77e0a5c713'
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 102.561] Cloning pythondata-cpu-ibex Git repository...
+Cloning into 'pythondata-cpu-ibex'...
+remote: Enumerating objects: 24806, done.
+remote: Counting objects: 100% (1333/1333), done.
+remote: Compressing objects: 100% (760/760), done.
+remote: Total 24806 (delta 815), reused 929 (delta 555), pack-reused 23473
+Receiving objects: 100% (24806/24806), 11.27 MiB | 10.36 MiB/s, done.
+Resolving deltas: 100% (17695/17695), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Note: switching to 'd3d53df'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at d3d53df6 Merge commit 'e70add7228dc9b82c724078475e44e467808175d'
+[ 105.496] Cloning pythondata-cpu-minerva Git repository...
+Cloning into 'pythondata-cpu-minerva'...
+remote: Enumerating objects: 1054, done.
+remote: Counting objects: 100% (1054/1054), done.
+remote: Compressing objects: 100% (376/376), done.
+remote: Total 1054 (delta 713), reused 998 (delta 657), pack-reused 0
+Receiving objects: 100% (1054/1054), 212.50 KiB | 1.74 MiB/s, done.
+Resolving deltas: 100% (713/713), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 106.496] Cloning pythondata-cpu-naxriscv Git repository...
+Cloning into 'pythondata-cpu-naxriscv'...
+remote: Enumerating objects: 121, done.
+remote: Counting objects: 100% (121/121), done.
+remote: Compressing objects: 100% (72/72), done.
+remote: Total 121 (delta 61), reused 99 (delta 43), pack-reused 0
+Receiving objects: 100% (121/121), 16.09 KiB | 5.36 MiB/s, done.
+Resolving deltas: 100% (61/61), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 107.289] Cloning pythondata-cpu-picorv32 Git repository...
+Cloning into 'pythondata-cpu-picorv32'...
+remote: Enumerating objects: 3257, done.
+remote: Counting objects: 100% (476/476), done.
+remote: Compressing objects: 100% (200/200), done.
+remote: Total 3257 (delta 271), reused 463 (delta 258), pack-reused 2781
+Receiving objects: 100% (3257/3257), 970.37 KiB | 4.51 MiB/s, done.
+Resolving deltas: 100% (2059/2059), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 108.417] Cloning pythondata-cpu-rocket Git repository...
+Cloning into 'pythondata-cpu-rocket'...
+remote: Enumerating objects: 1396, done.
+remote: Counting objects: 100% (603/603), done.
+remote: Compressing objects: 100% (87/87), done.
+remote: Total 1396 (delta 530), reused 578 (delta 510), pack-reused 793
+Receiving objects: 100% (1396/1396), 118.15 MiB | 9.76 MiB/s, done.
+Resolving deltas: 100% (1035/1035), done.
+Updating files: 100% (1051/1051), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 146.680] Cloning pythondata-cpu-serv Git repository...
+Cloning into 'pythondata-cpu-serv'...
+remote: Enumerating objects: 2905, done.
+remote: Counting objects: 100% (199/199), done.
+remote: Compressing objects: 100% (144/144), done.
+remote: Total 2905 (delta 93), reused 140 (delta 51), pack-reused 2706
+Receiving objects: 100% (2905/2905), 1.99 MiB | 7.83 MiB/s, done.
+Resolving deltas: 100% (1802/1802), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 147.806] Cloning pythondata-cpu-vexriscv Git repository...
+Cloning into 'pythondata-cpu-vexriscv'...
+remote: Enumerating objects: 1051, done.
+remote: Counting objects: 100% (485/485), done.
+remote: Compressing objects: 100% (90/90), done.
+remote: Total 1051 (delta 411), reused 427 (delta 377), pack-reused 566
+Receiving objects: 100% (1051/1051), 2.65 MiB | 9.59 MiB/s, done.
+Resolving deltas: 100% (540/540), done.
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 149.290] Cloning pythondata-cpu-vexriscv-smp Git repository...
+Cloning into 'pythondata-cpu-vexriscv-smp'...
+remote: Enumerating objects: 301, done.
+remote: Counting objects: 100% (212/212), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 301 (delta 207), reused 198 (delta 198), pack-reused 89
+Receiving objects: 100% (301/301), 4.53 MiB | 8.96 MiB/s, done.
+Resolving deltas: 100% (212/212), done.
+Submodule 'pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL' (https://github.com/SpinalHDL/SpinalHDL.git) registered for path 'pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL'
+Submodule 'pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv' (https://github.com/SpinalHDL/VexRiscv.git) registered for path 'pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv'
+Cloning into '/home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL'...
+remote: Enumerating objects: 86418, done.
+remote: Counting objects: 100% (2325/2325), done.
+remote: Compressing objects: 100% (618/618), done.
+remote: Total 86418 (delta 1606), reused 2214 (delta 1517), pack-reused 84093
+Receiving objects: 100% (86418/86418), 34.80 MiB | 14.90 MiB/s, done.
+Resolving deltas: 100% (39176/39176), done.
+Cloning into '/home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv'...
+remote: Enumerating objects: 15847, done.
+remote: Counting objects: 100% (5377/5377), done.
+remote: Compressing objects: 100% (1673/1673), done.
+remote: Total 15847 (delta 3808), reused 4183 (delta 3686), pack-reused 10470
+Receiving objects: 100% (15847/15847), 12.89 MiB | 16.31 MiB/s, done.
+Resolving deltas: 100% (9489/9489), done.
+Submodule path 'pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL': checked out '4fd59f09e99b2a3a9e2d5fa00fdad9a536652ae2'
+Submodule 'tester/src/test/python/cocotblib' (https://github.com/SpinalHDL/CocotbLib.git) registered for path 'pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL/tester/src/test/python/cocotblib'
+Cloning into '/home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL/tester/src/test/python/cocotblib'...
+remote: Enumerating objects: 124, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 124 (delta 4), reused 9 (delta 3), pack-reused 109
+Receiving objects: 100% (124/124), 36.77 KiB | 875.00 KiB/s, done.
+Resolving deltas: 100% (64/64), done.
+Submodule path 'pythondata_cpu_vexriscv_smp/verilog/ext/SpinalHDL/tester/src/test/python/cocotblib': checked out 'a98830423924fc89bfebae84cb802fc90d352602'
+Submodule path 'pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv': checked out 'd7e9c726c36c66caf0f6bc4c15ffc659f27c237f'
+Submodule 'src/test/resources/VexRiscvRegressionData' (https://github.com/SpinalHDL/VexRiscvRegressionData.git) registered for path 'pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv/src/test/resources/VexRiscvRegressionData'
+Cloning into '/home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv/src/test/resources/VexRiscvRegressionData'...
+remote: Enumerating objects: 78, done.
+remote: Total 78 (delta 0), reused 0 (delta 0), pack-reused 78
+Submodule path 'pythondata_cpu_vexriscv_smp/verilog/ext/VexRiscv/src/test/resources/VexRiscvRegressionData': checked out '539398c1481203a51115b5f1228ea961f0ac9bd3'
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[ 164.310] Installing Git repositories...
+[ 164.310] ------------------------------
+[ 164.310] Installing migen Git repository...
+Obtaining file:///home/kevin/migen
+Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from migen==0.9.2) (0.4.3)
+Installing collected packages: migen
+  Attempting uninstall: migen
+    Found existing installation: migen 0.9.2
+    Can't uninstall 'migen'. No files were found to uninstall.
+  Running setup.py develop for migen
+Successfully installed migen
+[ 166.560] Installing pythondata-software-picolibc Git repository...
+Obtaining file:///home/kevin/pythondata-software-picolibc
+Installing collected packages: pythondata-software-picolibc
+  Attempting uninstall: pythondata-software-picolibc
+    Found existing installation: pythondata-software-picolibc 1.7.9.post181
+    Can't uninstall 'pythondata-software-picolibc'. No files were found to uninstall.
+  Running setup.py develop for pythondata-software-picolibc
+Successfully installed pythondata-software-picolibc
+[ 168.966] Installing pythondata-software-compiler_rt Git repository...
+Obtaining file:///home/kevin/pythondata-software-compiler_rt
+Installing collected packages: pythondata-software-compiler-rt
+  Attempting uninstall: pythondata-software-compiler-rt
+    Found existing installation: pythondata-software-compiler-rt 0.0.post6206
+    Can't uninstall 'pythondata-software-compiler-rt'. No files were found to uninstall.
+  Running setup.py develop for pythondata-software-compiler-rt
+Successfully installed pythondata-software-compiler-rt
+[ 171.362] Installing litex Git repository...
+Obtaining file:///home/kevin/litex
+Requirement already satisfied: migen in /home/kevin/migen (from litex==2022.12) (0.9.2)
+Collecting packaging
+  Downloading packaging-23.1-py3-none-any.whl (48 kB)
+     |████████████████████████████████| 48 kB 538 kB/s
+Collecting pyserial
+  Downloading pyserial-3.5-py2.py3-none-any.whl (90 kB)
+     |████████████████████████████████| 90 kB 1.6 MB/s
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from litex==2022.12) (2.22.0)
+Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from migen->litex==2022.12) (0.4.3)
+Installing collected packages: packaging, pyserial, litex
+  Running setup.py develop for litex
+Successfully installed litex packaging-23.1 pyserial-3.5
+[ 174.895] Installing liteeth Git repository...
+Obtaining file:///home/kevin/liteeth
+Collecting liteiclink
+  Downloading liteiclink-2022.12.tar.gz (71 kB)
+     |████████████████████████████████| 71 kB 1.1 MB/s
+Requirement already satisfied: litex in /home/kevin/litex (from liteeth==2022.12) (2022.12)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from liteeth==2022.12) (5.3.1)
+Requirement already satisfied: migen in /home/kevin/migen (from litex->liteeth==2022.12) (0.9.2)
+Requirement already satisfied: packaging in /home/kevin/.local/lib/python3.8/site-packages (from litex->liteeth==2022.12) (23.1)
+Requirement already satisfied: pyserial in /home/kevin/.local/lib/python3.8/site-packages (from litex->liteeth==2022.12) (3.5)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from litex->liteeth==2022.12) (2.22.0)
+Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from migen->litex->liteeth==2022.12) (0.4.3)
+Building wheels for collected packages: liteiclink
+  Building wheel for liteiclink (setup.py) ... done
+  Created wheel for liteiclink: filename=liteiclink-2022.12-py3-none-any.whl size=80693 sha256=3c93f412c6a874476631f85c06663ad689415e91e34b46192e48d229ba6bf755
+  Stored in directory: /home/kevin/.cache/pip/wheels/4c/0f/07/09db0dda82c183a57f4e0d27bb833d4a0c5da5e6432c66800c
+Successfully built liteiclink
+Installing collected packages: liteiclink, liteeth
+  Running setup.py develop for liteeth
+Successfully installed liteeth liteiclink-2022.12
+[ 178.691] Installing litedram Git repository...
+Obtaining file:///home/kevin/litedram
+Requirement already satisfied: litex in /home/kevin/litex (from litedram==2022.12) (2022.12)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from litedram==2022.12) (5.3.1)
+Requirement already satisfied: migen in /home/kevin/migen (from litex->litedram==2022.12) (0.9.2)
+Requirement already satisfied: packaging in /home/kevin/.local/lib/python3.8/site-packages (from litex->litedram==2022.12) (23.1)
+Requirement already satisfied: pyserial in /home/kevin/.local/lib/python3.8/site-packages (from litex->litedram==2022.12) (3.5)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from litex->litedram==2022.12) (2.22.0)
+Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from migen->litex->litedram==2022.12) (0.4.3)
+Installing collected packages: litedram
+  Attempting uninstall: litedram
+    Found existing installation: litedram 2022.12
+    Can't uninstall 'litedram'. No files were found to uninstall.
+  Running setup.py develop for litedram
+Successfully installed litedram
+[ 180.969] Installing litepcie Git repository...
+Obtaining file:///home/kevin/litepcie
+Requirement already satisfied: litex in /home/kevin/litex (from litepcie==2022.12) (2022.12)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from litepcie==2022.12) (5.3.1)
+Requirement already satisfied: migen in /home/kevin/migen (from litex->litepcie==2022.12) (0.9.2)
+Requirement already satisfied: packaging in /home/kevin/.local/lib/python3.8/site-packages (from litex->litepcie==2022.12) (23.1)
+Requirement already satisfied: pyserial in /home/kevin/.local/lib/python3.8/site-packages (from litex->litepcie==2022.12) (3.5)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from litex->litepcie==2022.12) (2.22.0)
+Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from migen->litex->litepcie==2022.12) (0.4.3)
+Installing collected packages: litepcie
+  Attempting uninstall: litepcie
+    Found existing installation: litepcie 2022.12
+    Can't uninstall 'litepcie'. No files were found to uninstall.
+  Running setup.py develop for litepcie
+Successfully installed litepcie
+[ 183.400] Installing litesata Git repository...
+Obtaining file:///home/kevin/litesata
+Installing collected packages: litesata
+  Attempting uninstall: litesata
+    Found existing installation: litesata 0.0.0
+    Can't uninstall 'litesata'. No files were found to uninstall.
+  Running setup.py develop for litesata
+Successfully installed litesata
+[ 185.712] Installing litesdcard Git repository...
+Obtaining file:///home/kevin/litesdcard
+Installing collected packages: litesdcard
+  Attempting uninstall: litesdcard
+    Found existing installation: litesdcard 0.0.0
+    Can't uninstall 'litesdcard'. No files were found to uninstall.
+  Running setup.py develop for litesdcard
+Successfully installed litesdcard
+[ 187.993] Installing liteiclink Git repository...
+Obtaining file:///home/kevin/liteiclink
+Requirement already satisfied: litex in /home/kevin/litex (from liteiclink==2022.12) (2022.12)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from liteiclink==2022.12) (5.3.1)
+Requirement already satisfied: migen in /home/kevin/migen (from litex->liteiclink==2022.12) (0.9.2)
+Requirement already satisfied: packaging in /home/kevin/.local/lib/python3.8/site-packages (from litex->liteiclink==2022.12) (23.1)
+Requirement already satisfied: pyserial in /home/kevin/.local/lib/python3.8/site-packages (from litex->liteiclink==2022.12) (3.5)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from litex->liteiclink==2022.12) (2.22.0)
+Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from migen->litex->liteiclink==2022.12) (0.4.3)
+Installing collected packages: liteiclink
+  Attempting uninstall: liteiclink
+    Found existing installation: liteiclink 2022.12
+    Uninstalling liteiclink-2022.12:
+      Successfully uninstalled liteiclink-2022.12
+  Running setup.py develop for liteiclink
+Successfully installed liteiclink
+[ 190.266] Installing litescope Git repository...
+Obtaining file:///home/kevin/litescope
+Installing collected packages: litescope
+  Attempting uninstall: litescope
+    Found existing installation: litescope 0.0.0
+    Can't uninstall 'litescope'. No files were found to uninstall.
+  Running setup.py develop for litescope
+Successfully installed litescope
+[ 192.548] Installing litejesd204b Git repository...
+Obtaining file:///home/kevin/litejesd204b
+Installing collected packages: litejesd204b
+  Attempting uninstall: litejesd204b
+    Found existing installation: litejesd204b 0.0.0
+    Can't uninstall 'litejesd204b'. No files were found to uninstall.
+  Running setup.py develop for litejesd204b
+Successfully installed litejesd204b
+[ 194.908] Installing litespi Git repository...
+Obtaining file:///home/kevin/litespi
+Installing collected packages: litespi
+  Attempting uninstall: litespi
+    Found existing installation: litespi 0.0.0
+    Can't uninstall 'litespi'. No files were found to uninstall.
+  Running setup.py develop for litespi
+Successfully installed litespi
+[ 197.192] Installing valentyusb Git repository...
+Obtaining file:///home/kevin/valentyusb
+Installing collected packages: valentyusb
+  Attempting uninstall: valentyusb
+    Found existing installation: valentyusb 0.0.0
+    Can't uninstall 'valentyusb'. No files were found to uninstall.
+  Running setup.py develop for valentyusb
+Successfully installed valentyusb
+[ 199.544] Installing litex-boards Git repository...
+Obtaining file:///home/kevin/litex-boards
+Installing collected packages: litex-boards
+  Attempting uninstall: litex-boards
+    Found existing installation: litex-boards 0.0.0
+    Can't uninstall 'litex-boards'. No files were found to uninstall.
+  Running setup.py develop for litex-boards
+Successfully installed litex-boards
+[ 201.889] Installing pythondata-misc-tapcfg Git repository...
+Obtaining file:///home/kevin/pythondata-misc-tapcfg
+Installing collected packages: pythondata-misc-tapcfg
+  Attempting uninstall: pythondata-misc-tapcfg
+    Found existing installation: pythondata-misc-tapcfg 0.0.post517
+    Can't uninstall 'pythondata-misc-tapcfg'. No files were found to uninstall.
+  Running setup.py develop for pythondata-misc-tapcfg
+Successfully installed pythondata-misc-tapcfg
+[ 204.218] Installing pythondata-misc-usb_ohci Git repository...
+Obtaining file:///home/kevin/pythondata-misc-usb_ohci
+Installing collected packages: pythondata-misc-usb-ohci
+  Attempting uninstall: pythondata-misc-usb-ohci
+    Found existing installation: pythondata-misc-usb-ohci 1.0.1.post325
+    Can't uninstall 'pythondata-misc-usb-ohci'. No files were found to uninstall.
+  Running setup.py develop for pythondata-misc-usb-ohci
+Successfully installed pythondata-misc-usb-ohci
+[ 206.544] Installing pythondata-cpu-lm32 Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-lm32
+Installing collected packages: pythondata-cpu-lm32
+  Attempting uninstall: pythondata-cpu-lm32
+    Found existing installation: pythondata-cpu-lm32 0.0.post199
+    Can't uninstall 'pythondata-cpu-lm32'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-lm32
+Successfully installed pythondata-cpu-lm32
+[ 208.941] Installing pythondata-cpu-mor1kx Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-mor1kx
+Installing collected packages: pythondata-cpu-mor1kx
+  Attempting uninstall: pythondata-cpu-mor1kx
+    Found existing installation: pythondata-cpu-mor1kx 5.1.1.post142
+    Can't uninstall 'pythondata-cpu-mor1kx'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-mor1kx
+Successfully installed pythondata-cpu-mor1kx
+[ 211.316] Installing pythondata-cpu-marocchino Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-marocchino
+Installing collected packages: pythondata-cpu-marocchino
+  Attempting uninstall: pythondata-cpu-marocchino
+    Found existing installation: pythondata-cpu-marocchino 0.0.post209
+    Can't uninstall 'pythondata-cpu-marocchino'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-marocchino
+Successfully installed pythondata-cpu-marocchino
+[ 213.649] Installing pythondata-cpu-microwatt Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-microwatt
+Installing collected packages: pythondata-cpu-microwatt
+  Attempting uninstall: pythondata-cpu-microwatt
+    Found existing installation: pythondata-cpu-microwatt 0.0.post1409
+    Can't uninstall 'pythondata-cpu-microwatt'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-microwatt
+Successfully installed pythondata-cpu-microwatt
+[ 216.114] Installing pythondata-cpu-blackparrot Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-blackparrot
+Installing collected packages: pythondata-cpu-blackparrot
+  Attempting uninstall: pythondata-cpu-blackparrot
+    Found existing installation: pythondata-cpu-blackparrot 0.0.post1817
+    Can't uninstall 'pythondata-cpu-blackparrot'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-blackparrot
+Successfully installed pythondata-cpu-blackparrot
+[ 218.608] Installing pythondata-cpu-cv32e40p Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-cv32e40p
+Installing collected packages: pythondata-cpu-cv32e40p
+  Attempting uninstall: pythondata-cpu-cv32e40p
+    Found existing installation: pythondata-cpu-cv32e40p 0.0.post152
+    Can't uninstall 'pythondata-cpu-cv32e40p'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-cv32e40p
+Successfully installed pythondata-cpu-cv32e40p
+[ 221.033] Installing pythondata-cpu-cv32e41p Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-cv32e41p
+Installing collected packages: pythondata-cpu-cv32e41p
+  Attempting uninstall: pythondata-cpu-cv32e41p
+    Found existing installation: pythondata-cpu-cv32e41p 0.0.post1883
+    Can't uninstall 'pythondata-cpu-cv32e41p'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-cv32e41p
+Successfully installed pythondata-cpu-cv32e41p
+[ 223.451] Installing pythondata-cpu-cva5 Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-cva5
+Installing collected packages: pythondata-cpu-cva5
+  Attempting uninstall: pythondata-cpu-cva5
+    Found existing installation: pythondata-cpu-cva5 0.0.post649
+    Can't uninstall 'pythondata-cpu-cva5'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-cva5
+Successfully installed pythondata-cpu-cva5
+[ 225.900] Installing pythondata-cpu-cva6 Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-cva6
+Installing collected packages: pythondata-cpu-cva6
+  Attempting uninstall: pythondata-cpu-cva6
+    Found existing installation: pythondata-cpu-cva6 4.2.0.post435
+    Can't uninstall 'pythondata-cpu-cva6'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-cva6
+Successfully installed pythondata-cpu-cva6
+[ 228.377] Installing pythondata-cpu-ibex Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-ibex
+Installing collected packages: pythondata-cpu-ibex
+  Attempting uninstall: pythondata-cpu-ibex
+    Found existing installation: pythondata-cpu-ibex 0.0.post2214
+    Can't uninstall 'pythondata-cpu-ibex'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-ibex
+Successfully installed pythondata-cpu-ibex
+[ 230.776] Installing pythondata-cpu-minerva Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-minerva
+Installing collected packages: pythondata-cpu-minerva
+  Attempting uninstall: pythondata-cpu-minerva
+    Found existing installation: pythondata-cpu-minerva 0.0.post262
+    Can't uninstall 'pythondata-cpu-minerva'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-minerva
+Successfully installed pythondata-cpu-minerva
+[ 233.193] Installing pythondata-cpu-naxriscv Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-naxriscv
+Installing collected packages: pythondata-cpu-naxriscv
+  Attempting uninstall: pythondata-cpu-naxriscv
+    Found existing installation: pythondata-cpu-naxriscv 1.0.1.post325
+    Can't uninstall 'pythondata-cpu-naxriscv'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-naxriscv
+Successfully installed pythondata-cpu-naxriscv
+[ 235.585] Installing pythondata-cpu-picorv32 Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-picorv32
+Installing collected packages: pythondata-cpu-picorv32
+  Attempting uninstall: pythondata-cpu-picorv32
+    Found existing installation: pythondata-cpu-picorv32 1.0.post194
+    Can't uninstall 'pythondata-cpu-picorv32'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-picorv32
+Successfully installed pythondata-cpu-picorv32
+[ 238.004] Installing pythondata-cpu-rocket Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-rocket
+Installing collected packages: pythondata-cpu-rocket
+  Attempting uninstall: pythondata-cpu-rocket
+    Found existing installation: pythondata-cpu-rocket 0.0.post7146
+    Can't uninstall 'pythondata-cpu-rocket'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-rocket
+Successfully installed pythondata-cpu-rocket
+[ 240.512] Installing pythondata-cpu-serv Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-serv
+Installing collected packages: pythondata-cpu-serv
+  Attempting uninstall: pythondata-cpu-serv
+    Found existing installation: pythondata-cpu-serv 1.2.0.post146
+    Can't uninstall 'pythondata-cpu-serv'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-serv
+Successfully installed pythondata-cpu-serv
+[ 242.976] Installing pythondata-cpu-vexriscv Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-vexriscv
+Installing collected packages: pythondata-cpu-vexriscv
+  Attempting uninstall: pythondata-cpu-vexriscv
+    Found existing installation: pythondata-cpu-vexriscv 1.0.1.post407
+    Can't uninstall 'pythondata-cpu-vexriscv'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-vexriscv
+Successfully installed pythondata-cpu-vexriscv
+[ 245.416] Installing pythondata-cpu-vexriscv-smp Git repository...
+Obtaining file:///home/kevin/pythondata-cpu-vexriscv-smp
+Installing collected packages: pythondata-cpu-vexriscv-smp
+  Attempting uninstall: pythondata-cpu-vexriscv-smp
+    Found existing installation: pythondata-cpu-vexriscv-smp 1.0.1.post325
+    Can't uninstall 'pythondata-cpu-vexriscv-smp'. No files were found to uninstall.
+  Running setup.py develop for pythondata-cpu-vexriscv-smp
+Successfully installed pythondata-cpu-vexriscv-smp
+kevin@kevin:~/linux-on-litex-vexriscv$ ./litex_setup.py --update
+          __   _ __      _  __
+         / /  (_) /____ | |/_/
+        / /__/ / __/ -_)>  <
+       /____/_/\__/\__/_/|_|
+     Build your hardware, easily!
+          LiteX Setup utility.
+
+[   0.002] LiteX Setup auto-update...
+[   0.486] LiteX Setup is up to date.
+[   0.487] Updating Git repositories...
+[   0.487] ----------------------------
+[   0.487] Updating migen Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   1.060] Updating pythondata-software-picolibc Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   1.645] Updating pythondata-software-compiler_rt Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   2.322] Updating litex Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   2.927] Updating liteeth Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   3.394] Updating litedram Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   3.883] Updating litepcie Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   4.347] Updating litesata Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   4.803] Updating litesdcard Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   5.275] Updating liteiclink Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   5.744] Updating litescope Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   6.216] Updating litejesd204b Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   6.666] Updating litespi Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   7.141] Updating valentyusb Git repository...
+Already on 'hw_cdc_eptri'
+Your branch is up to date with 'origin/hw_cdc_eptri'.
+Already up to date.
+[   7.611] Updating litex-boards Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   8.155] Updating pythondata-misc-tapcfg Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   8.625] Updating pythondata-misc-usb_ohci Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   9.082] Updating pythondata-cpu-lm32 Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[   9.553] Updating pythondata-cpu-mor1kx Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[  10.015] Updating pythondata-cpu-naxriscv Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[  10.475] Updating pythondata-cpu-serv Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[  10.960] Updating pythondata-cpu-vexriscv Git repository...
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+[  11.467] Updating pythondata-cpu-vexriscv-smp Git repository...
+M       pythondata_cpu_vexriscv_smp.egg-info/SOURCES.txt
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+kevin@kevin:~/linux-on-litex-vexriscv$ sudo ./litex_setup.py --gcc=riscv
+          __   _ __      _  __
+         / /  (_) /____ | |/_/
+        / /__/ / __/ -_)>  <
+       /____/_/\__/\__/_/|_|
+     Build your hardware, easily!
+          LiteX Setup utility.
+
+[   0.002] LiteX Setup auto-update...
+[   0.217] LiteX Setup is up to date.
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  binutils-riscv64-linux-gnu cpp-9-riscv64-linux-gnu cpp-riscv64-linux-gnu gcc-10-cross-base-ports gcc-9-cross-base-ports gcc-9-riscv64-linux-gnu
+  gcc-9-riscv64-linux-gnu-base libatomic1-riscv64-cross libc6-dev-riscv64-cross libc6-riscv64-cross libgcc-9-dev-riscv64-cross libgcc-s1-riscv64-cross
+  libgomp1-riscv64-cross linux-libc-dev-riscv64-cross
+Suggested packages:
+  binutils-doc gcc-9-locales cpp-doc gcc-9-doc libtool gdb-riscv64-linux-gnu gcc-doc
+The following NEW packages will be installed:
+  binutils-riscv64-linux-gnu cpp-9-riscv64-linux-gnu cpp-riscv64-linux-gnu gcc-10-cross-base-ports gcc-9-cross-base-ports gcc-9-riscv64-linux-gnu
+  gcc-9-riscv64-linux-gnu-base gcc-riscv64-linux-gnu libatomic1-riscv64-cross libc6-dev-riscv64-cross libc6-riscv64-cross libgcc-9-dev-riscv64-cross
+  libgcc-s1-riscv64-cross libgomp1-riscv64-cross linux-libc-dev-riscv64-cross
+0 upgraded, 15 newly installed, 0 to remove and 93 not upgraded.
+Need to get 20.7 MB of archives.
+After this operation, 59.3 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://tw.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils-riscv64-linux-gnu amd64 2.34-6ubuntu1.4 [1058 kB]
+Get:2 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 gcc-9-riscv64-linux-gnu-base amd64 9.4.0-1ubuntu1~20.04cross1 [19.6 kB]
+Get:3 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 cpp-9-riscv64-linux-gnu amd64 9.4.0-1ubuntu1~20.04cross1 [6305 kB]
+Get:4 http://tw.archive.ubuntu.com/ubuntu focal/universe amd64 cpp-riscv64-linux-gnu amd64 4:9.3.0-1ubuntu2 [3416 B]
+Get:5 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 gcc-10-cross-base-ports all 10.3.0-1ubuntu1~20.04cross1 [15.3 kB]
+Get:6 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 gcc-9-cross-base-ports all 9.4.0-1ubuntu1~20.04cross1 [14.9 kB]
+Get:7 http://tw.archive.ubuntu.com/ubuntu focal/universe amd64 libc6-riscv64-cross all 2.31-0ubuntu7cross1 [1030 kB]
+Get:8 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libgcc-s1-riscv64-cross all 10.3.0-1ubuntu1~20.04cross1 [40.7 kB]
+Get:9 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libgomp1-riscv64-cross all 10.3.0-1ubuntu1~20.04cross1 [81.9 kB]
+Get:10 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libatomic1-riscv64-cross all 10.3.0-1ubuntu1~20.04cross1 [7196 B]
+Get:11 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libgcc-9-dev-riscv64-cross all 9.4.0-1ubuntu1~20.04cross1 [403 kB]
+Get:12 http://tw.archive.ubuntu.com/ubuntu focal-updates/universe amd64 gcc-9-riscv64-linux-gnu amd64 9.4.0-1ubuntu1~20.04cross1 [7053 kB]
+Get:13 http://tw.archive.ubuntu.com/ubuntu focal/universe amd64 gcc-riscv64-linux-gnu amd64 4:9.3.0-1ubuntu2 [1420 B]
+Get:14 http://tw.archive.ubuntu.com/ubuntu focal/universe amd64 linux-libc-dev-riscv64-cross all 5.4.0-21.25cross1 [1035 kB]
+Get:15 http://tw.archive.ubuntu.com/ubuntu focal/universe amd64 libc6-dev-riscv64-cross all 2.31-0ubuntu7cross1 [3638 kB]
+Fetched 20.7 MB in 1s (16.6 MB/s)
+Selecting previously unselected package binutils-riscv64-linux-gnu.
+(Reading database ... 192654 files and directories currently installed.)
+Preparing to unpack .../00-binutils-riscv64-linux-gnu_2.34-6ubuntu1.4_amd64.deb ...
+Unpacking binutils-riscv64-linux-gnu (2.34-6ubuntu1.4) ...
+Selecting previously unselected package gcc-9-riscv64-linux-gnu-base:amd64.
+Preparing to unpack .../01-gcc-9-riscv64-linux-gnu-base_9.4.0-1ubuntu1~20.04cross1_amd64.deb ...
+Unpacking gcc-9-riscv64-linux-gnu-base:amd64 (9.4.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package cpp-9-riscv64-linux-gnu.
+Preparing to unpack .../02-cpp-9-riscv64-linux-gnu_9.4.0-1ubuntu1~20.04cross1_amd64.deb ...
+Unpacking cpp-9-riscv64-linux-gnu (9.4.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package cpp-riscv64-linux-gnu.
+Preparing to unpack .../03-cpp-riscv64-linux-gnu_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking cpp-riscv64-linux-gnu (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package gcc-10-cross-base-ports.
+Preparing to unpack .../04-gcc-10-cross-base-ports_10.3.0-1ubuntu1~20.04cross1_all.deb ...
+Unpacking gcc-10-cross-base-ports (10.3.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package gcc-9-cross-base-ports.
+Preparing to unpack .../05-gcc-9-cross-base-ports_9.4.0-1ubuntu1~20.04cross1_all.deb ...
+Unpacking gcc-9-cross-base-ports (9.4.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package libc6-riscv64-cross.
+Preparing to unpack .../06-libc6-riscv64-cross_2.31-0ubuntu7cross1_all.deb ...
+Unpacking libc6-riscv64-cross (2.31-0ubuntu7cross1) ...
+Selecting previously unselected package libgcc-s1-riscv64-cross.
+Preparing to unpack .../07-libgcc-s1-riscv64-cross_10.3.0-1ubuntu1~20.04cross1_all.deb ...
+Unpacking libgcc-s1-riscv64-cross (10.3.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package libgomp1-riscv64-cross.
+Preparing to unpack .../08-libgomp1-riscv64-cross_10.3.0-1ubuntu1~20.04cross1_all.deb ...
+Unpacking libgomp1-riscv64-cross (10.3.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package libatomic1-riscv64-cross.
+Preparing to unpack .../09-libatomic1-riscv64-cross_10.3.0-1ubuntu1~20.04cross1_all.deb ...
+Unpacking libatomic1-riscv64-cross (10.3.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package libgcc-9-dev-riscv64-cross.
+Preparing to unpack .../10-libgcc-9-dev-riscv64-cross_9.4.0-1ubuntu1~20.04cross1_all.deb ...
+Unpacking libgcc-9-dev-riscv64-cross (9.4.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package gcc-9-riscv64-linux-gnu.
+Preparing to unpack .../11-gcc-9-riscv64-linux-gnu_9.4.0-1ubuntu1~20.04cross1_amd64.deb ...
+Unpacking gcc-9-riscv64-linux-gnu (9.4.0-1ubuntu1~20.04cross1) ...
+Selecting previously unselected package gcc-riscv64-linux-gnu.
+Preparing to unpack .../12-gcc-riscv64-linux-gnu_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking gcc-riscv64-linux-gnu (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package linux-libc-dev-riscv64-cross.
+Preparing to unpack .../13-linux-libc-dev-riscv64-cross_5.4.0-21.25cross1_all.deb ...
+Unpacking linux-libc-dev-riscv64-cross (5.4.0-21.25cross1) ...
+Selecting previously unselected package libc6-dev-riscv64-cross.
+Preparing to unpack .../14-libc6-dev-riscv64-cross_2.31-0ubuntu7cross1_all.deb ...
+Unpacking libc6-dev-riscv64-cross (2.31-0ubuntu7cross1) ...
+Setting up gcc-10-cross-base-ports (10.3.0-1ubuntu1~20.04cross1) ...
+Setting up binutils-riscv64-linux-gnu (2.34-6ubuntu1.4) ...
+Setting up gcc-9-riscv64-linux-gnu-base:amd64 (9.4.0-1ubuntu1~20.04cross1) ...
+Setting up gcc-9-cross-base-ports (9.4.0-1ubuntu1~20.04cross1) ...
+Setting up cpp-9-riscv64-linux-gnu (9.4.0-1ubuntu1~20.04cross1) ...
+Setting up linux-libc-dev-riscv64-cross (5.4.0-21.25cross1) ...
+Setting up libc6-riscv64-cross (2.31-0ubuntu7cross1) ...
+Setting up libgomp1-riscv64-cross (10.3.0-1ubuntu1~20.04cross1) ...
+Setting up libatomic1-riscv64-cross (10.3.0-1ubuntu1~20.04cross1) ...
+Setting up cpp-riscv64-linux-gnu (4:9.3.0-1ubuntu2) ...
+Setting up libgcc-s1-riscv64-cross (10.3.0-1ubuntu1~20.04cross1) ...
+Setting up libc6-dev-riscv64-cross (2.31-0ubuntu7cross1) ...
+Setting up libgcc-9-dev-riscv64-cross (9.4.0-1ubuntu1~20.04cross1) ...
+Setting up gcc-9-riscv64-linux-gnu (9.4.0-1ubuntu1~20.04cross1) ...
+Setting up gcc-riscv64-linux-gnu (4:9.3.0-1ubuntu2) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
+kevin@kevin:~/linux-on-litex-vexriscv$ ~/litex-boards/litex_boards/targets/xilinx_kv260.py
+INFO:SoC:        __   _ __      _  __
+INFO:SoC:       / /  (_) /____ | |/_/
+INFO:SoC:      / /__/ / __/ -_)>  <
+INFO:SoC:     /____/_/\__/\__/_/|_|
+INFO:SoC:  Build your hardware, easily!
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Creating SoC... (2023-04-29 12:54:41)
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:FPGA device : xck26-sfvc784-2lv-c.
+INFO:SoC:System clock: 100.000MHz.
+INFO:SoCBusHandler:Creating Bus Handler...
+INFO:SoCBusHandler:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoCBusHandler:Adding reserved Bus Regions...
+INFO:SoCBusHandler:Bus Handler created.
+INFO:SoCCSRHandler:Creating CSR Handler...
+INFO:SoCCSRHandler:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoCCSRHandler:Adding reserved CSRs...
+INFO:SoCCSRHandler:CSR Handler created.
+INFO:SoCIRQHandler:Creating IRQ Handler...
+INFO:SoCIRQHandler:IRQ Handler (up to 32 Locations).
+INFO:SoCIRQHandler:Adding reserved IRQs...
+INFO:SoCIRQHandler:IRQ Handler created.
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Initial SoC:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoC:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoC:IRQ Handler (up to 32 Locations).
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Controller ctrl added.
+INFO:SoC:CPU zynqmp added.
+INFO:SoC:CPU zynqmp adding IO Region 0 at 0x80000000 (Size: 0x40000000).
+INFO:SoCBusHandler:io0 Region added at Origin: 0x80000000, Size: 0x40000000, Mode: RW, Cached: False Linker: False.
+INFO:SoC:CPU zynqmp adding IO Region 1 at 0xe0000000 (Size: 0xff20000000).
+INFO:SoCRegion:Region size rounded internally from 0xff20000000 to 0x10000000000.
+INFO:SoCBusHandler:io1 Region added at Origin: 0xe0000000, Size: 0xff20000000, Mode: RW, Cached: False Linker: False.
+INFO:SoC:CPU zynqmp setting reset address to 0xc0000000.
+INFO:SoC:CPU zynqmp adding Bus Master(s).
+INFO:SoCBusHandler:master0 added as Bus Master.
+INFO:SoCBusHandler:sram Region added at Origin: 0x00000000, Size: 0x80000000, Mode: RW, Cached: True Linker: False.
+INFO:SoCBusHandler:rom Region added at Origin: 0xc0000000, Size: 0x04000000, Mode: RW, Cached: True Linker: True.
+kevin@kevin:~/linux-on-litex-vexriscv$ wget -O linux_2022_03_23.zip  https://github.com/litex-hub/linux-on-litex-vexriscv/files/8331338/linux_2022_03_23.zip
+--2023-04-29 12:54:51--  https://github.com/litex-hub/linux-on-litex-vexriscv/files/8331338/linux_2022_03_23.zip
+Resolving github.com (github.com)... 20.27.177.113
+Connecting to github.com (github.com)|20.27.177.113|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://objects.githubusercontent.com/github-production-repository-file-5c1aeb/183392076/8331338?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230429%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230429T045452Z&X-Amz-Expires=300&X-Amz-Signature=5dc457ec093c7ec0123d3d805d2c81d6f3bf17fa0f74153e1976d427f7373a0f&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=183392076&response-content-disposition=attachment%3Bfilename%3Dlinux_2022_03_23.zip&response-content-type=application%2Fzip [following]
+--2023-04-29 12:54:52--  https://objects.githubusercontent.com/github-production-repository-file-5c1aeb/183392076/8331338?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230429%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230429T045452Z&X-Amz-Expires=300&X-Amz-Signature=5dc457ec093c7ec0123d3d805d2c81d6f3bf17fa0f74153e1976d427f7373a0f&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=183392076&response-content-disposition=attachment%3Bfilename%3Dlinux_2022_03_23.zip&response-content-type=application%2Fzip
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5358911 (5.1M) [application/zip]
+Saving to: ‘linux_2022_03_23.zip’
+
+linux_2022_03_23.zip                    100%[=============================================================================>]   5.11M  3.88MB/s    in 1.3s
+
+2023-04-29 12:54:54 (3.88 MB/s) - ‘linux_2022_03_23.zip’ saved [5358911/5358911]
+
+kevin@kevin:~/linux-on-litex-vexriscv$ unzip linux_2022_03_23.zip -d ./images
+Archive:  linux_2022_03_23.zip
+replace ./images/boot.json? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+  inflating: ./images/boot.json
+  inflating: ./images/Image
+  inflating: ./images/opensbi.bin
+  inflating: ./images/rootfs.cpio
+  inflating: ./images/rv32.dtb
+kevin@kevin:~/linux-on-litex-vexriscv$ ./sim.py
+INFO:SoC:        __   _ __      _  __
+INFO:SoC:       / /  (_) /____ | |/_/
+INFO:SoC:      / /__/ / __/ -_)>  <
+INFO:SoC:     /____/_/\__/\__/_/|_|
+INFO:SoC:  Build your hardware, easily!
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Creating SoC... (2023-04-29 12:55:16)
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:FPGA device : SIM.
+INFO:SoC:System clock: 100.000MHz.
+INFO:SoCBusHandler:Creating Bus Handler...
+INFO:SoCBusHandler:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoCBusHandler:Adding reserved Bus Regions...
+INFO:SoCBusHandler:Bus Handler created.
+INFO:SoCCSRHandler:Creating CSR Handler...
+INFO:SoCCSRHandler:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoCCSRHandler:Adding reserved CSRs...
+INFO:SoCCSRHandler:CSR Handler created.
+INFO:SoCIRQHandler:Creating IRQ Handler...
+INFO:SoCIRQHandler:IRQ Handler (up to 32 Locations).
+INFO:SoCIRQHandler:Adding reserved IRQs...
+INFO:SoCIRQHandler:IRQ Handler created.
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Initial SoC:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoC:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoC:IRQ Handler (up to 32 Locations).
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Controller ctrl added.
+INFO:SoC:CPU vexriscv_smp added.
+INFO:SoC:CPU vexriscv_smp adding IO Region 0 at 0x80000000 (Size: 0x80000000).
+INFO:SoCBusHandler:io0 Region added at Origin: 0x80000000, Size: 0x80000000, Mode: RW, Cached: False Linker: False.
+INFO:SoC:CPU vexriscv_smp overriding sram mapping from 0x01000000 to 0x10000000.
+INFO:SoC:CPU vexriscv_smp setting reset address to 0x00000000.
+INFO:SoC:CPU vexriscv_smp adding Bus Master(s).
+INFO:SoCBusHandler:cpu_bus0 added as Bus Master.
+INFO:SoC:CPU vexriscv_smp adding Interrupt(s).
+INFO:SoCIRQHandler:noirq IRQ added at Location 0.
+INFO:SoC:CPU noirq adding SoC components.
+INFO:SoCCSRHandler:uart CSR added at Location 2.
+INFO:SoCCSRHandler:timer0 CSR added at Location 3.
+INFO:SoCBusHandler:opensbi Region added at Origin: 0x40f00000, Size: 0x00080000, Mode: RW, Cached: True Linker: True.
+INFO:SoCBusHandler:plic Region added at Origin: 0xf0c00000, Size: 0x00400000, Mode: RW, Cached: False Linker: False.
+INFO:SoCBusHandler:plic added as Bus Slave.
+INFO:SoCBusHandler:clint Region added at Origin: 0xf0010000, Size: 0x00010000, Mode: RW, Cached: False Linker: False.
+INFO:SoCBusHandler:clint added as Bus Slave.
+INFO:SoCBusHandler:rom Region added at Origin: 0x00000000, Size: 0x00010000, Mode: RX, Cached: True Linker: False.
+INFO:SoCBusHandler:rom added as Bus Slave.
+INFO:SoC:RAM rom added Origin: 0x00000000, Size: 0x00010000, Mode: RX, Cached: True Linker: False.
+INFO:SoCBusHandler:sram Region added at Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached: True Linker: False.
+INFO:SoCBusHandler:sram added as Bus Slave.
+INFO:SoC:RAM sram added Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached: True Linker: False.
+INFO:SoCIRQHandler:uart IRQ allocated at Location 1.
+INFO:SoCIRQHandler:timer0 IRQ allocated at Location 2.
+INFO:SoCBusHandler:main_ram Region added at Origin: 0x40000000, Size: 0x04000000, Mode: RWX, Cached: True Linker: False.
+INFO:SoCBusHandler:main_ram added as Bus Slave.
+INFO:SoC:CSR Bridge csr added.
+INFO:SoCBusHandler:csr Region added at Origin: 0xf0000000, Size: 0x00010000, Mode: RW, Cached: False Linker: False.
+INFO:SoCBusHandler:csr added as Bus Slave.
+INFO:SoCCSRHandler:csr added as CSR Master.
+INFO:SoCBusHandler:Interconnect: InterconnectShared (1 <-> 6).
+INFO:SoCCSRHandler:ctrl CSR allocated at Location 0.
+INFO:SoCCSRHandler:sdram CSR allocated at Location 1.
+INFO:SoCCSRHandler:supervisor CSR allocated at Location 4.
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Finalized SoC:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:32-bit wishbone Bus, 4.0GiB Address Space.
+IO Regions: (1)
+io0                 : Origin: 0x80000000, Size: 0x80000000, Mode: RW, Cached: False Linker: False
+Bus Regions: (7)
+rom                 : Origin: 0x00000000, Size: 0x00010000, Mode: RX, Cached: True Linker: False
+sram                : Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached: True Linker: False
+main_ram            : Origin: 0x40000000, Size: 0x04000000, Mode: RWX, Cached: True Linker: False
+opensbi             : Origin: 0x40f00000, Size: 0x00080000, Mode: RW, Cached: True Linker: True
+csr                 : Origin: 0xf0000000, Size: 0x00010000, Mode: RW, Cached: False Linker: False
+clint               : Origin: 0xf0010000, Size: 0x00010000, Mode: RW, Cached: False Linker: False
+plic                : Origin: 0xf0c00000, Size: 0x00400000, Mode: RW, Cached: False Linker: False
+Bus Masters: (1)
+- cpu_bus0
+Bus Slaves: (6)
+- plic
+- clint
+- rom
+- sram
+- main_ram
+- csr
+INFO:SoC:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+CSR Locations: (5)
+- ctrl       : 0
+- sdram      : 1
+- uart       : 2
+- timer0     : 3
+- supervisor : 4
+INFO:SoC:IRQ Handler (up to 32 Locations).
+IRQ Locations: (3)
+- noirq  : 0
+- uart   : 1
+- timer0 : 2
+INFO:SoC:--------------------------------------------------------------------------------
+VexRiscv cluster : VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:SoC Hierarchy:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:
+SoCLinux
+└─── crg (CRG)
+└─── bus (SoCBusHandler)
+│    └─── _interconnect (InterconnectShared)
+│    │    └─── arbiter (Arbiter)
+│    │    │    └─── rr (RoundRobin)
+│    │    └─── decoder (Decoder)
+│    │    └─── timeout (Timeout)
+│    │    │    └─── waittimer_0* (WaitTimer)
+└─── csr (SoCCSRHandler)
+└─── irq (SoCIRQHandler)
+└─── ctrl (SoCController)
+│    └─── _reset (CSRStorage)
+│    └─── _scratch (CSRStorage)
+│    └─── _bus_errors (CSRStatus)
+└─── cpu (VexRiscvSMP)
+│    └─── [VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood]
+└─── rom (SRAM)
+└─── sram (SRAM)
+└─── uart_phy (RS232PHYModel)
+└─── uart (UART)
+│    └─── ev (EventManager)
+│    │    └─── eventsourceprocess_0* (EventSourceProcess)
+│    │    └─── eventsourceprocess_1* (EventSourceProcess)
+│    └─── tx_fifo (SyncFIFO)
+│    │    └─── fifo (SyncFIFOBuffered)
+│    │    │    └─── fifo (SyncFIFO)
+│    └─── rx_fifo (SyncFIFO)
+│    │    └─── fifo (SyncFIFOBuffered)
+│    │    │    └─── fifo (SyncFIFO)
+└─── timer0 (Timer)
+│    └─── ev (EventManager)
+│    │    └─── eventsourceprocess_0* (EventSourceProcess)
+└─── supervisor (Supervisor)
+└─── sdrphy (SDRAMPHYModel)
+│    └─── dfiphasemodel_0* (DFIPhaseModel)
+│    └─── bankmodel_0* (BankModel)
+│    └─── bankmodel_1* (BankModel)
+│    └─── bankmodel_2* (BankModel)
+│    └─── bankmodel_3* (BankModel)
+└─── sdram (LiteDRAMCore)
+│    └─── dfii (DFIInjector)
+│    │    └─── pi0 (PhaseInjector)
+│    └─── controller (LiteDRAMController)
+│    │    └─── refresher (Refresher)
+│    │    │    └─── timer (RefreshTimer)
+│    │    │    └─── postponer (RefreshPostponer)
+│    │    │    └─── sequencer (RefreshSequencer)
+│    │    │    │    └─── refreshexecuter_0* (RefreshExecuter)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_0* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_1* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_2* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_3* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── multiplexer (Multiplexer)
+│    │    │    └─── choose_cmd (_CommandChooser)
+│    │    │    │    └─── roundrobin_0* (RoundRobin)
+│    │    │    └─── choose_req (_CommandChooser)
+│    │    │    │    └─── roundrobin_0* (RoundRobin)
+│    │    │    └─── _steerer_0* (_Steerer)
+│    │    │    └─── trrdcon (tXXDController)
+│    │    │    └─── tfawcon (tFAWController)
+│    │    │    └─── tccdcon (tXXDController)
+│    │    │    └─── twtrcon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    └─── crossbar (LiteDRAMCrossbar)
+│    │    └─── roundrobin_0* (RoundRobin)
+│    │    └─── roundrobin_1* (RoundRobin)
+│    │    └─── roundrobin_2* (RoundRobin)
+│    │    └─── roundrobin_3* (RoundRobin)
+└─── converter_0* (Converter)
+└─── wishbone_bridge (LiteDRAMWishbone2Native)
+│    └─── fsm (FSM)
+└─── csr_bridge (Wishbone2CSR)
+│    └─── fsm_0* (FSM)
+└─── csr_bankarray (CSRBankArray)
+│    └─── csrbank_0* (CSRBank)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstorage_1* (CSRStorage)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    └─── csrbank_1* (CSRBank)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstorage_1* (CSRStorage)
+│    │    └─── csrstorage_2* (CSRStorage)
+│    │    └─── csrstorage_3* (CSRStorage)
+│    │    └─── csrstorage_4* (CSRStorage)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    └─── csrbank_2* (CSRBank)
+│    └─── csrbank_3* (CSRBank)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstorage_1* (CSRStorage)
+│    │    └─── csrstorage_2* (CSRStorage)
+│    │    └─── csrstorage_3* (CSRStorage)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    │    └─── csrstatus_1* (CSRStatus)
+│    │    └─── csrstatus_2* (CSRStatus)
+│    │    └─── csrstorage_4* (CSRStorage)
+│    └─── csrbank_4* (CSRBank)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    │    └─── csrstatus_1* (CSRStatus)
+│    │    └─── csrstatus_2* (CSRStatus)
+│    │    └─── csrstatus_3* (CSRStatus)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstatus_4* (CSRStatus)
+│    │    └─── csrstatus_5* (CSRStatus)
+└─── csr_interconnect (InterconnectShared)
+* : Generated name.
+[]: BlackBox.
+
+INFO:SoC:--------------------------------------------------------------------------------
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libc'
+if [ -d "/home/kevin/litex/litex/soc/software/libc/riscv" ]; then \
+        cp /home/kevin/litex/litex/soc/software/libc/riscv/* /home/kevin/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/machine/riscv/ ;\
+fi
+meson /home/kevin/pythondata-software-picolibc/pythondata_software_picolibc/data \
+        -Dmultilib=false \
+        -Dpicocrt=false \
+        -Datomic-ungetc=false \
+        -Dthread-local-storage=false \
+        -Dio-long-long=true \
+        -Dformat-default=integer \
+        -Dincludedir=picolibc/riscv64-linux-gnu/include \
+        -Dlibdir=picolibc/riscv64-linux-gnu/lib \
+        --cross-file cross.txt
+WARNING: Unknown CPU family riscv, please report this at https://github.com/mesonbuild/meson/issues/new
+The Meson build system
+Version: 0.59.0
+Source dir: /home/kevin/pythondata-software-picolibc/pythondata_software_picolibc/data
+Build dir: /home/kevin/linux-on-litex-vexriscv/build/sim/software/libc
+Build type: cross build
+Project name: picolibc
+Project version: 1.7.9
+C compiler for the host machine: riscv64-linux-gnu-gcc (gcc 9.4.0 "riscv64-linux-gnu-gcc (Ubuntu 9.4.0-1ubuntu1~20.04) 9.4.0")
+C linker for the host machine: riscv64-linux-gnu-gcc ld.bfd 2.34
+C compiler for the build machine: cc (gcc 9.4.0 "cc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0")
+C linker for the build machine: cc ld.bfd 2.34
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: riscv
+Host machine cpu: vexriscv
+Target machine cpu family: riscv
+Target machine cpu: vexriscv
+Compiler for C supports arguments -nostdlib: YES
+Checking if "long double check" compiles: YES
+Checking if "long double same as double" compiles: NO
+Checking if "long double mantissa is 64 bits" compiles: NO
+Checking if "long double mantissa is 113 bits" compiles: YES
+Checking if "double same as float" compiles: NO
+Compiler for C supports arguments -fno-common: YES
+Compiler for C supports arguments -frounding-math: YES
+Compiler for C supports arguments -fsignaling-nans: YES
+Compiler for C supports arguments -Wno-unsupported-floating-point-opt: NO
+Compiler for C supports arguments -fno-stack-protector: YES
+Compiler for C supports arguments -fno-builtin-copysignl: YES
+Program riscv64-linux-gnu-gcc-nm found: YES
+Program scripts/duplicate-names found: YES (/home/kevin/pythondata-software-picolibc/pythondata_software_picolibc/data/scripts/duplicate-names)
+Compiler for C supports link arguments -Wl,--defsym=_start=0: YES
+Compiler for C supports link arguments -Wl,-alias,main,testalias: NO
+Compiler for C supports function attribute alias: YES
+Compiler for C supports function attribute format: YES
+Compiler for C supports function attribute weak: YES
+Configuring picolibc.specs using configuration
+Configuring picolibcpp.specs using configuration
+Configuring test.specs using configuration
+Configuring picolibc.ld using configuration
+Configuring picolibcpp.ld using configuration
+Compiler for C supports arguments -Werror=implicit-function-declaration: YES
+Compiler for C supports arguments -Werror=vla: YES
+Compiler for C supports arguments -Warray-bounds: YES
+Compiler for C supports arguments -Wold-style-definition: YES
+Compiler for C supports arguments -Werror=double-promotion: YES
+Compiler for C supports arguments -Wno-missing-braces: YES
+Compiler for C supports arguments -Wno-implicit-int: YES
+Compiler for C supports arguments -Wno-return-type: YES
+Compiler for C supports arguments -Wno-unused-command-line-argument: NO
+Checking if "packed structs may contain bitfields" compiles: YES
+Checking if "has __builtin_mul_overflow" links: YES
+Checking if "has __builtin_add_overflow" links: YES
+Checking if "supports _Complex" compiles: YES
+Checking if "has __builtin_expect" links: YES
+Compiler for C supports arguments -Werror: YES
+Checking if "attribute __alloc_size__" compiles: YES
+Checking if "attributes constructor/destructor" compiles: YES
+Checking if "test for __builtin_alloca" links: YES
+Checking if "test for __builtin_ffs" links: YES
+Checking if "test for __builtin_ffsl" links: YES
+Checking if "test for __builtin_ffsll" links: YES
+Checking if "test for __builtin_ctz" links: YES
+Checking if "test for __builtin_ctzl" links: YES
+Checking if "test for __builtin_ctzll" links: YES
+Checking if "test for __builtin_copysignl" links: YES
+Checking if "test for __builtin_copysign" links: YES
+Checking if "test for __builtin_isinfl" links: YES
+Checking if "test for __builtin_isinf" links: YES
+Checking if "test for __builtin_isnanl" links: YES
+Checking if "test for __builtin_isnan" links: YES
+Checking if "test for __builtin_finitel" links: YES
+Checking if "test for __builtin_isfinite" links: YES
+Compiler for C supports arguments -fno-tree-loop-distribute-patterns: YES
+Checking if "no_builtin attribute" compiles: NO
+Compiler for C supports function attribute always_inline: YES
+Compiler for C supports function attribute gnu_inline: YES
+Compiler for C supports arguments -fno-builtin: YES
+Compiler for C supports arguments -ffunction-sections: YES
+Compiler for C supports arguments -fstack-protector-all: YES
+Compiler for C supports arguments -fstack-protector-strong: YES
+Compiler for C supports arguments -fno-builtin-malloc: YES
+Compiler for C supports arguments -fno-builtin-free: YES
+Message: libc/string/memcpy.c: machine overrides generic
+Message: libc/string/memmove.S: machine overrides generic
+Message: libc/string/memset.S: machine overrides generic
+Message: libc/string/strcpy.c: machine overrides generic
+Message: libc/string/strlen.c: machine overrides generic
+Message: libc/string/strcmp.S: machine overrides generic
+Message: libc/include/sys/fenv.h: machine overrides generic
+Message: libc/include/machine/math.h: machine overrides generic
+Message: libm/math/s_fabs.c: machine overrides generic
+Message: libm/math/s_sqrt.c: machine overrides generic
+Message: libm/math/sf_fabs.c: machine overrides generic
+Message: libm/math/sf_sqrt.c: machine overrides generic
+Message: libm/common/s_finite.c: machine overrides generic
+Message: libm/common/s_copysign.c: machine overrides generic
+Message: libm/common/s_isinf.c: machine overrides generic
+Message: libm/common/s_isnan.c: machine overrides generic
+Message: libm/common/s_fma.c: machine overrides generic
+Message: libm/common/s_fmax.c: machine overrides generic
+Message: libm/common/s_fmin.c: machine overrides generic
+Message: libm/common/s_fpclassify.c: machine overrides generic
+Message: libm/common/s_lrint.c: machine overrides generic
+Message: libm/common/s_llrint.c: machine overrides generic
+Message: libm/common/s_lround.c: machine overrides generic
+Message: libm/common/s_llround.c: machine overrides generic
+Message: libm/common/sf_finite.c: machine overrides generic
+Message: libm/common/sf_copysign.c: machine overrides generic
+Message: libm/common/sf_isinf.c: machine overrides generic
+Message: libm/common/sf_isnan.c: machine overrides generic
+Message: libm/common/sf_fma.c: machine overrides generic
+Message: libm/common/sf_fmax.c: machine overrides generic
+Message: libm/common/sf_fmin.c: machine overrides generic
+Message: libm/common/sf_fpclassify.c: machine overrides generic
+Message: libm/common/sf_lrint.c: machine overrides generic
+Message: libm/common/sf_llrint.c: machine overrides generic
+Message: libm/common/sf_lround.c: machine overrides generic
+Message: libm/common/sf_llround.c: machine overrides generic
+Message: libm/fenv/feclearexcept.c: machine overrides generic
+Message: libm/fenv/fegetenv.c: machine overrides generic
+Message: libm/fenv/fegetexceptflag.c: machine overrides generic
+Message: libm/fenv/fegetround.c: machine overrides generic
+Message: libm/fenv/feholdexcept.c: machine overrides generic
+Message: libm/fenv/feraiseexcept.c: machine overrides generic
+Message: libm/fenv/fesetenv.c: machine overrides generic
+Message: libm/fenv/fesetexceptflag.c: machine overrides generic
+Message: libm/fenv/fesetround.c: machine overrides generic
+Message: libm/fenv/fetestexcept.c: machine overrides generic
+Message: libm/fenv/feupdateenv.c: machine overrides generic
+Configuring picolibc.h using configuration
+Build targets in project: 9
+
+Found ninja-1.11.1.git.kitware.jobserver-1 at /home/kevin/.local/bin/ninja
+meson compile
+[886/886] Generating libc_duplicates with a custom command
+cp newlib/libc.a __libc.a
+ CC       _libc.a
+ AR       _libc.a
+cp __libc.a _libc.a
+ CC       libc.a
+ AR       libc.a
+cp _libc.a libc.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libc'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libcompiler_rt'
+ CC       umodsi3.o
+ CC       udivsi3.o
+ CC       divsi3.o
+ CC       modsi3.o
+ CC       comparesf2.o
+/home/kevin/pythondata-software-compiler_rt/pythondata_software_compiler_rt/data/lib/builtins/comparesf2.c:85:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+   85 | FNALIAS(__cmpsf2, __lesf2);
+      | ^~~~~~~
+ CC       comparedf2.o
+/home/kevin/pythondata-software-compiler_rt/pythondata_software_compiler_rt/data/lib/builtins/comparedf2.c:85:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+   85 | FNALIAS(__cmpdf2, __ledf2);
+      | ^~~~~~~
+ CC       negsf2.o
+ CC       negdf2.o
+ CC       addsf3.o
+ CC       subsf3.o
+ CC       mulsf3.o
+ CC       divsf3.o
+ CC       lshrdi3.o
+ CC       muldi3.o
+ CC       divdi3.o
+ CC       ashldi3.o
+ CC       ashrdi3.o
+ CC       udivmoddi4.o
+ CC       floatsisf.o
+ CC       floatunsisf.o
+ CC       fixsfsi.o
+ CC       fixdfdi.o
+ CC       fixunssfsi.o
+ CC       fixunsdfdi.o
+ CC       adddf3.o
+ CC       subdf3.o
+ CC       muldf3.o
+ CC       divdf3.o
+ CC       floatsidf.o
+ CC       floatunsidf.o
+ CC       floatdidf.o
+ CC       fixdfsi.o
+ CC       fixunsdfsi.o
+ CC       clzsi2.o
+ CC       ctzsi2.o
+ CC       udivdi3.o
+ CC       umoddi3.o
+ CC       moddi3.o
+ CC       ucmpdi2.o
+ CC       mulsi3.o
+ AR       libcompiler_rt.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libcompiler_rt'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libbase'
+ CC       crc16.o
+ CC       crc32.o
+ CC       console.o
+ CC       system.o
+ CC       progress.o
+ CC       memtest.o
+ CC       uart.o
+ CC       spiflash.o
+ CC       i2c.o
+ CC       isr.o
+ AR       libbase.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libbase'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libfatfs'
+ CC       ffunicode.o
+ CC       ff.o
+ AR       libfatfs.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libfatfs'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitespi'
+ CC       spiflash.o
+ AR       liblitespi.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitespi'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitedram'
+ CC       sdram.o
+ CC       bist.o
+ CC       sdram_dbg.o
+ CC       sdram_spd.o
+ CC       utils.o
+ CC       accessors.o
+ AR       liblitedram.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitedram'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libliteeth'
+ CC       udp.o
+ CC       tftp.o
+ CC       mdio.o
+ AR       libliteeth.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libliteeth'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesdcard'
+ CC       sdcard.o
+ CC       spisdcard.o
+ AR       liblitesdcard.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesdcard'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesata'
+ CC       sata.o
+ AR       liblitesata.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesata'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/bios'
+ CC       boot-helper.o
+ CC       boot.o
+ CC       helpers.o
+ CC       cmd_bios.o
+ CC       cmd_mem.o
+ CC       cmd_boot.o
+ CC       cmd_i2c.o
+ CC       cmd_spiflash.o
+ CC       cmd_litedram.o
+ CC       cmd_liteeth.o
+ CC       cmd_litesdcard.o
+ CC       cmd_litesata.o
+ CC       sim_debug.o
+ CC       main.o
+ CC       complete.o
+ CC       readline.o
+ CC       crt0.o
+ CC       bios.elf
+chmod -x bios.elf
+ OBJCOPY  bios.bin
+chmod -x bios.bin
+python3 -m litex.soc.software.crcfbigen bios.bin --little
+python3 -m litex.soc.software.memusage bios.elf /home/kevin/linux-on-litex-vexriscv/build/sim/software/bios/../include/generated/regions.ld riscv64-linux-gnu
+
+ROM usage: 24.25KiB     (37.89%)
+RAM usage: 1.36KiB      (16.99%)
+
+rm crt0.o
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/bios'
+INFO:SoC:Initializing ROM rom with contents (Size: 0x6104).
+INFO:SoC:Auto-Resizing ROM rom from 0x10000 to 0x6104.
+INFO:SoC:        __   _ __      _  __
+INFO:SoC:       / /  (_) /____ | |/_/
+INFO:SoC:      / /__/ / __/ -_)>  <
+INFO:SoC:     /____/_/\__/\__/_/|_|
+INFO:SoC:  Build your hardware, easily!
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Creating SoC... (2023-04-29 12:55:39)
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:FPGA device : SIM.
+INFO:SoC:System clock: 100.000MHz.
+INFO:SoCBusHandler:Creating Bus Handler...
+INFO:SoCBusHandler:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoCBusHandler:Adding reserved Bus Regions...
+INFO:SoCBusHandler:Bus Handler created.
+INFO:SoCCSRHandler:Creating CSR Handler...
+INFO:SoCCSRHandler:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoCCSRHandler:Adding reserved CSRs...
+INFO:SoCCSRHandler:CSR Handler created.
+INFO:SoCIRQHandler:Creating IRQ Handler...
+INFO:SoCIRQHandler:IRQ Handler (up to 32 Locations).
+INFO:SoCIRQHandler:Adding reserved IRQs...
+INFO:SoCIRQHandler:IRQ Handler created.
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Initial SoC:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoC:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoC:IRQ Handler (up to 32 Locations).
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Controller ctrl added.
+INFO:SoC:CPU vexriscv_smp added.
+INFO:SoC:CPU vexriscv_smp adding IO Region 0 at 0x80000000 (Size: 0x80000000).
+INFO:SoCBusHandler:io0 Region added at Origin: 0x80000000, Size: 0x80000000, Mode: RW, Cached: False Linker: False.
+INFO:SoC:CPU vexriscv_smp setting reset address to 0x00000000.
+INFO:SoC:CPU vexriscv_smp adding Bus Master(s).
+INFO:SoCBusHandler:cpu_bus0 added as Bus Master.
+INFO:SoC:CPU vexriscv_smp adding Interrupt(s).
+INFO:SoCIRQHandler:noirq IRQ added at Location 0.
+INFO:SoC:CPU noirq adding SoC components.
+INFO:SoCCSRHandler:uart CSR added at Location 2.
+INFO:SoCCSRHandler:timer0 CSR added at Location 3.
+INFO:SoCBusHandler:opensbi Region added at Origin: 0x40f00000, Size: 0x00080000, Mode: RW, Cached: True Linker: True.
+INFO:SoCBusHandler:plic Region added at Origin: 0xf0c00000, Size: 0x00400000, Mode: RW, Cached: False Linker: False.
+INFO:SoCBusHandler:plic added as Bus Slave.
+INFO:SoCBusHandler:clint Region added at Origin: 0xf0010000, Size: 0x00010000, Mode: RW, Cached: False Linker: False.
+INFO:SoCBusHandler:clint added as Bus Slave.
+INFO:SoCBusHandler:rom Region added at Origin: 0x00000000, Size: 0x00010000, Mode: RX, Cached: True Linker: False.
+INFO:SoCBusHandler:rom added as Bus Slave.
+INFO:SoC:RAM rom added Origin: 0x00000000, Size: 0x00010000, Mode: RX, Cached: True Linker: False.
+INFO:SoCBusHandler:sram Region added at Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached: True Linker: False.
+INFO:SoCBusHandler:sram added as Bus Slave.
+INFO:SoC:RAM sram added Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached: True Linker: False.
+INFO:SoCIRQHandler:uart IRQ allocated at Location 1.
+INFO:SoCIRQHandler:timer0 IRQ allocated at Location 2.
+INFO:SoCBusHandler:main_ram Region added at Origin: 0x40000000, Size: 0x04000000, Mode: RWX, Cached: True Linker: False.
+INFO:SoCBusHandler:main_ram added as Bus Slave.
+INFO:SoC:CSR Bridge csr added.
+INFO:SoCBusHandler:csr Region added at Origin: 0xf0000000, Size: 0x00010000, Mode: RW, Cached: False Linker: False.
+INFO:SoCBusHandler:csr added as Bus Slave.
+INFO:SoCCSRHandler:csr added as CSR Master.
+INFO:SoCBusHandler:Interconnect: InterconnectShared (1 <-> 6).
+INFO:SoCCSRHandler:ctrl CSR allocated at Location 0.
+INFO:SoCCSRHandler:sdram CSR allocated at Location 1.
+INFO:SoCCSRHandler:supervisor CSR allocated at Location 4.
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Finalized SoC:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:32-bit wishbone Bus, 4.0GiB Address Space.
+IO Regions: (1)
+io0                 : Origin: 0x80000000, Size: 0x80000000, Mode: RW, Cached: False Linker: False
+Bus Regions: (7)
+rom                 : Origin: 0x00000000, Size: 0x00010000, Mode: RX, Cached: True Linker: False
+sram                : Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached: True Linker: False
+main_ram            : Origin: 0x40000000, Size: 0x04000000, Mode: RWX, Cached: True Linker: False
+opensbi             : Origin: 0x40f00000, Size: 0x00080000, Mode: RW, Cached: True Linker: True
+csr                 : Origin: 0xf0000000, Size: 0x00010000, Mode: RW, Cached: False Linker: False
+clint               : Origin: 0xf0010000, Size: 0x00010000, Mode: RW, Cached: False Linker: False
+plic                : Origin: 0xf0c00000, Size: 0x00400000, Mode: RW, Cached: False Linker: False
+Bus Masters: (1)
+- cpu_bus0
+Bus Slaves: (6)
+- plic
+- clint
+- rom
+- sram
+- main_ram
+- csr
+INFO:SoC:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+CSR Locations: (5)
+- ctrl       : 0
+- sdram      : 1
+- uart       : 2
+- timer0     : 3
+- supervisor : 4
+INFO:SoC:IRQ Handler (up to 32 Locations).
+IRQ Locations: (3)
+- noirq  : 0
+- uart   : 1
+- timer0 : 2
+INFO:SoC:--------------------------------------------------------------------------------
+VexRiscv cluster : VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:SoC Hierarchy:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:
+SoCLinux
+└─── crg (CRG)
+└─── bus (SoCBusHandler)
+│    └─── _interconnect (InterconnectShared)
+│    │    └─── arbiter (Arbiter)
+│    │    │    └─── rr (RoundRobin)
+│    │    └─── decoder (Decoder)
+│    │    └─── timeout (Timeout)
+│    │    │    └─── waittimer_0* (WaitTimer)
+└─── csr (SoCCSRHandler)
+└─── irq (SoCIRQHandler)
+└─── ctrl (SoCController)
+│    └─── _reset (CSRStorage)
+│    └─── _scratch (CSRStorage)
+│    └─── _bus_errors (CSRStatus)
+└─── cpu (VexRiscvSMP)
+│    └─── [VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood]
+└─── rom (SRAM)
+└─── sram (SRAM)
+└─── uart_phy (RS232PHYModel)
+└─── uart (UART)
+│    └─── ev (EventManager)
+│    │    └─── eventsourceprocess_0* (EventSourceProcess)
+│    │    └─── eventsourceprocess_1* (EventSourceProcess)
+│    └─── tx_fifo (SyncFIFO)
+│    │    └─── fifo (SyncFIFOBuffered)
+│    │    │    └─── fifo (SyncFIFO)
+│    └─── rx_fifo (SyncFIFO)
+│    │    └─── fifo (SyncFIFOBuffered)
+│    │    │    └─── fifo (SyncFIFO)
+└─── timer0 (Timer)
+│    └─── ev (EventManager)
+│    │    └─── eventsourceprocess_0* (EventSourceProcess)
+└─── supervisor (Supervisor)
+└─── sdrphy (SDRAMPHYModel)
+│    └─── dfiphasemodel_0* (DFIPhaseModel)
+│    └─── bankmodel_0* (BankModel)
+│    └─── bankmodel_1* (BankModel)
+│    └─── bankmodel_2* (BankModel)
+│    └─── bankmodel_3* (BankModel)
+└─── sdram (LiteDRAMCore)
+│    └─── dfii (DFIInjector)
+│    │    └─── pi0 (PhaseInjector)
+│    └─── controller (LiteDRAMController)
+│    │    └─── refresher (Refresher)
+│    │    │    └─── timer (RefreshTimer)
+│    │    │    └─── postponer (RefreshPostponer)
+│    │    │    └─── sequencer (RefreshSequencer)
+│    │    │    │    └─── refreshexecuter_0* (RefreshExecuter)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_0* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_1* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_2* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── bankmachine_3* (BankMachine)
+│    │    │    └─── syncfifo_0* (SyncFIFO)
+│    │    │    │    └─── fifo (SyncFIFO)
+│    │    │    └─── buffer_0* (Buffer)
+│    │    │    │    └─── pipe_valid (PipeValid)
+│    │    │    │    └─── pipeline (Pipeline)
+│    │    │    └─── twtpcon (tXXDController)
+│    │    │    └─── trccon (tXXDController)
+│    │    │    └─── trascon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    │    └─── multiplexer (Multiplexer)
+│    │    │    └─── choose_cmd (_CommandChooser)
+│    │    │    │    └─── roundrobin_0* (RoundRobin)
+│    │    │    └─── choose_req (_CommandChooser)
+│    │    │    │    └─── roundrobin_0* (RoundRobin)
+│    │    │    └─── _steerer_0* (_Steerer)
+│    │    │    └─── trrdcon (tXXDController)
+│    │    │    └─── tfawcon (tFAWController)
+│    │    │    └─── tccdcon (tXXDController)
+│    │    │    └─── twtrcon (tXXDController)
+│    │    │    └─── fsm (FSM)
+│    └─── crossbar (LiteDRAMCrossbar)
+│    │    └─── roundrobin_0* (RoundRobin)
+│    │    └─── roundrobin_1* (RoundRobin)
+│    │    └─── roundrobin_2* (RoundRobin)
+│    │    └─── roundrobin_3* (RoundRobin)
+└─── converter_0* (Converter)
+└─── wishbone_bridge (LiteDRAMWishbone2Native)
+│    └─── fsm (FSM)
+└─── csr_bridge (Wishbone2CSR)
+│    └─── fsm_0* (FSM)
+└─── csr_bankarray (CSRBankArray)
+│    └─── csrbank_0* (CSRBank)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstorage_1* (CSRStorage)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    └─── csrbank_1* (CSRBank)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstorage_1* (CSRStorage)
+│    │    └─── csrstorage_2* (CSRStorage)
+│    │    └─── csrstorage_3* (CSRStorage)
+│    │    └─── csrstorage_4* (CSRStorage)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    └─── csrbank_2* (CSRBank)
+│    └─── csrbank_3* (CSRBank)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstorage_1* (CSRStorage)
+│    │    └─── csrstorage_2* (CSRStorage)
+│    │    └─── csrstorage_3* (CSRStorage)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    │    └─── csrstatus_1* (CSRStatus)
+│    │    └─── csrstatus_2* (CSRStatus)
+│    │    └─── csrstorage_4* (CSRStorage)
+│    └─── csrbank_4* (CSRBank)
+│    │    └─── csrstatus_0* (CSRStatus)
+│    │    └─── csrstatus_1* (CSRStatus)
+│    │    └─── csrstatus_2* (CSRStatus)
+│    │    └─── csrstatus_3* (CSRStatus)
+│    │    └─── csrstorage_0* (CSRStorage)
+│    │    └─── csrstatus_4* (CSRStatus)
+│    │    └─── csrstatus_5* (CSRStatus)
+└─── csr_interconnect (InterconnectShared)
+* : Generated name.
+[]: BlackBox.
+
+INFO:SoC:--------------------------------------------------------------------------------
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libc'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libc'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libcompiler_rt'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libcompiler_rt'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libbase'
+ CC       console.o
+ CC       system.o
+ CC       memtest.o
+ CC       uart.o
+ CC       spiflash.o
+ CC       i2c.o
+ CC       isr.o
+ AR       libbase.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libbase'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libfatfs'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libfatfs'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitespi'
+ CC       spiflash.o
+ AR       liblitespi.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitespi'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitedram'
+ CC       sdram.o
+ CC       bist.o
+ CC       sdram_dbg.o
+ CC       sdram_spd.o
+ CC       utils.o
+ CC       accessors.o
+ AR       liblitedram.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitedram'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libliteeth'
+ CC       udp.o
+ CC       mdio.o
+ AR       libliteeth.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/libliteeth'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesdcard'
+ CC       sdcard.o
+ CC       spisdcard.o
+ AR       liblitesdcard.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesdcard'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesata'
+ CC       sata.o
+ AR       liblitesata.a
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/liblitesata'
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/bios'
+ CC       boot.o
+ CC       cmd_bios.o
+ CC       cmd_mem.o
+ CC       cmd_boot.o
+ CC       cmd_i2c.o
+ CC       cmd_spiflash.o
+ CC       cmd_litedram.o
+ CC       cmd_liteeth.o
+ CC       cmd_litesdcard.o
+ CC       cmd_litesata.o
+ CC       sim_debug.o
+ CC       main.o
+ CC       crt0.o
+ CC       bios.elf
+chmod -x bios.elf
+ OBJCOPY  bios.bin
+chmod -x bios.bin
+python3 -m litex.soc.software.crcfbigen bios.bin --little
+python3 -m litex.soc.software.memusage bios.elf /home/kevin/linux-on-litex-vexriscv/build/sim/software/bios/../include/generated/regions.ld riscv64-linux-gnu
+
+ROM usage: 24.25KiB     (37.89%)
+RAM usage: 1.36KiB      (16.99%)
+
+rm crt0.o
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/software/bios'
+INFO:SoC:Initializing ROM rom with contents (Size: 0x6104).
+INFO:SoC:Auto-Resizing ROM rom from 0x10000 to 0x6104.
+make: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware'
+mkdir -p modules
+make -C modules -f /home/kevin/litex/litex/build/sim/core/modules/Makefile
+make[1]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules'
+mkdir -p xgmii_ethernet
+make MOD=xgmii_ethernet -C xgmii_ethernet -f /home/kevin/litex/litex/build/sim/core/modules/xgmii_ethernet/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/xgmii_ethernet'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -I/home/kevin/litex/litex/build/sim/core/modules/xgmii_ethernet/../.. -o xgmii_ethernet.o /home/kevin/litex/litex/build/sim/core/modules/xgmii_ethernet/xgmii_ethernet.c
+cc -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -c -o tapcfg.o /home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/lib/tapcfg.c
+cc -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -c -o taplog.o /home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/lib/taplog.c
+cc -levent -shared -fPIC -lz -Wl,-soname,xgmii_ethernet.so -o xgmii_ethernet.so xgmii_ethernet.o tapcfg.o taplog.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/xgmii_ethernet'
+cp xgmii_ethernet/xgmii_ethernet.so xgmii_ethernet.so
+mkdir -p ethernet
+make MOD=ethernet -C ethernet -f /home/kevin/litex/litex/build/sim/core/modules/ethernet/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/ethernet'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -I/home/kevin/litex/litex/build/sim/core/modules/ethernet/../.. -o ethernet.o /home/kevin/litex/litex/build/sim/core/modules/ethernet/ethernet.c
+cc -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -c -o tapcfg.o /home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/lib/tapcfg.c
+cc -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -c -o taplog.o /home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/lib/taplog.c
+cc -levent -shared -fPIC -Wl,-soname,ethernet.so -o ethernet.so ethernet.o tapcfg.o taplog.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/ethernet'
+cp ethernet/ethernet.so ethernet.so
+mkdir -p serial2console
+make MOD=serial2console -C serial2console -f /home/kevin/litex/litex/build/sim/core/modules/serial2console/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/serial2console'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/litex/litex/build/sim/core/modules/serial2console/../.. -o serial2console.o /home/kevin/litex/litex/build/sim/core/modules/serial2console/serial2console.c
+cc -levent -shared -fPIC -Wl,-soname,serial2console.so -o serial2console.so serial2console.o
+rm serial2console.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/serial2console'
+cp serial2console/serial2console.so serial2console.so
+mkdir -p serial2tcp
+make MOD=serial2tcp -C serial2tcp -f /home/kevin/litex/litex/build/sim/core/modules/serial2tcp/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/serial2tcp'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/litex/litex/build/sim/core/modules/serial2tcp/../.. -o serial2tcp.o /home/kevin/litex/litex/build/sim/core/modules/serial2tcp/serial2tcp.c
+cc -levent -shared -fPIC -Wl,-soname,serial2tcp.so -o serial2tcp.so serial2tcp.o
+rm serial2tcp.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/serial2tcp'
+cp serial2tcp/serial2tcp.so serial2tcp.so
+mkdir -p clocker
+make MOD=clocker -C clocker -f /home/kevin/litex/litex/build/sim/core/modules/clocker/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/clocker'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/litex/litex/build/sim/core/modules/clocker/../.. -o clocker.o /home/kevin/litex/litex/build/sim/core/modules/clocker/clocker.c
+cc -levent -shared -fPIC -Wl,-soname,clocker.so -o clocker.so clocker.o
+rm clocker.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/clocker'
+cp clocker/clocker.so clocker.so
+mkdir -p spdeeprom
+make MOD=spdeeprom -C spdeeprom -f /home/kevin/litex/litex/build/sim/core/modules/spdeeprom/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/spdeeprom'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/litex/litex/build/sim/core/modules/spdeeprom/../.. -o spdeeprom.o /home/kevin/litex/litex/build/sim/core/modules/spdeeprom/spdeeprom.c
+cc -levent -shared -fPIC -Wl,-soname,spdeeprom.so -o spdeeprom.so spdeeprom.o
+rm spdeeprom.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/spdeeprom'
+cp spdeeprom/spdeeprom.so spdeeprom.so
+mkdir -p gmii_ethernet
+make MOD=gmii_ethernet -C gmii_ethernet -f /home/kevin/litex/litex/build/sim/core/modules/gmii_ethernet/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/gmii_ethernet'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -I/home/kevin/litex/litex/build/sim/core/modules/gmii_ethernet/../.. -o gmii_ethernet.o /home/kevin/litex/litex/build/sim/core/modules/gmii_ethernet/gmii_ethernet.c
+cc -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -c -o tapcfg.o /home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/lib/tapcfg.c
+cc -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/include -c -o taplog.o /home/kevin/pythondata-misc-tapcfg/pythondata_misc_tapcfg/data/src/lib/taplog.c
+cc -levent -shared -fPIC -lz -Wl,-soname,gmii_ethernet.so -o gmii_ethernet.so gmii_ethernet.o tapcfg.o taplog.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/gmii_ethernet'
+cp gmii_ethernet/gmii_ethernet.so gmii_ethernet.so
+mkdir -p jtagremote
+make MOD=jtagremote -C jtagremote -f /home/kevin/litex/litex/build/sim/core/modules/jtagremote/Makefile
+make[2]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/jtagremote'
+cc -c -Wall -O3 -ggdb -fPIC -Werror -I/home/kevin/litex/litex/build/sim/core/modules/jtagremote/../.. -o jtagremote.o /home/kevin/litex/litex/build/sim/core/modules/jtagremote/jtagremote.c
+cc -levent -shared -fPIC -Wl,-soname,jtagremote.so -o jtagremote.so jtagremote.o
+rm jtagremote.o
+make[2]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules/jtagremote'
+cp jtagremote/jtagremote.so jtagremote.so
+make[1]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/modules'
+mkdir -p /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir
+cc -c -ggdb -Wall -O3   -o /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir/modules.o /home/kevin/litex/litex/build/sim/core/modules.c
+In file included from /usr/include/string.h:495,
+                 from /home/kevin/litex/litex/build/sim/core/modules.c:5:
+In function ‘strcat’,
+    inlined from ‘tinydir_readfile’ at /home/kevin/litex/litex/build/sim/core/tinydir.h:532:2,
+    inlined from ‘litex_sim_load_ext_modules’ at /home/kevin/litex/litex/build/sim/core/modules.c:68:14:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:128:10: warning: ‘__builtin___strcat_chk’ accessing 4097 or more bytes at offsets 0 and 4096 may overlap 1 byte at offset 4096 [-Wrestrict]
+  128 |   return __builtin___strcat_chk (__dest, __src, __bos (__dest));
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -c -ggdb -Wall -O3   -o /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir/pads.o /home/kevin/litex/litex/build/sim/core/pads.c
+cc -c -ggdb -Wall -O3   -o /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir/sim.o /home/kevin/litex/litex/build/sim/core/sim.c
+cc -c -ggdb -Wall -O3   -o /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir/libdylib.o /home/kevin/litex/litex/build/sim/core/libdylib.c
+cc -c -ggdb -Wall -O3   -o /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir/parse.o /home/kevin/litex/litex/build/sim/core/parse.c
+verilator -Wno-fatal -O3 --cc /home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/Ram_1w_1rs_Generic.v --cc /home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood.v --cc /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/sim.v  --top-module sim --exe \
+        -DPRINTF_COND=0 \
+        sim_init.cpp /home/kevin/litex/litex/build/sim/core/veril.cpp modules.o pads.o sim.o libdylib.o parse.o \
+        --top-module sim \
+         \
+        -CFLAGS "-ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core" \
+        -LDFLAGS "-lpthread -Wl,--no-as-needed -ljson-c -lz -lm -lstdc++ -Wl,--no-as-needed -ldl -levent " \
+        --trace \
+         \
+         \
+        --unroll-count 256 \
+        --output-split 5000 \
+        --output-split-cfuncs 500 \
+        --output-split-ctrace 500 \
+         \
+        -Wno-BLKANDNBLK \
+        -Wno-WIDTH \
+        -Wno-COMBDLY \
+        -Wno-CASEINCOMPLETE \
+        --relative-includes
+%Warning-TIMESCALEMOD: /home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/Ram_1w_1rs_Generic.v:2:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    2 | module Ram_1w_1rs #(
+      |        ^~~~~~~~~~
+                       /home/kevin/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood.v:7:8: ... Location of module with timescale
+    7 | module VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood (
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/TIMESCALEMOD?v=5.009
+                       ... Use "/* verilator lint_off TIMESCALEMOD */" and lint_on around source to disable this message.
+make -j -C /home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir -f Vsim.mk Vsim
+make[1]: Entering directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir'
+g++  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -Os -c -o veril.o /home/kevin/litex/litex/build/sim/core/veril.cpp
+g++  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -Os -c -o sim_init.o ../sim_init.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o verilated.o /home/kevin/verilator/include/verilated.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o verilated_dpi.o /home/kevin/verilator/include/verilated_dpi.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o verilated_vcd_c.o /home/kevin/verilator/include/verilated_vcd_c.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o verilated_threads.o /home/kevin/verilator/include/verilated_threads.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim.o Vsim.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim___024root__DepSet_h104c642d__0.o Vsim___024root__DepSet_h104c642d__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim___024root__DepSet_hb1836b75__0.o Vsim___024root__DepSet_hb1836b75__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h837b84dc__0.o Vsim_sim__DepSet_h837b84dc__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h40728c06__0.o Vsim_sim__DepSet_h40728c06__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h40728c06__1.o Vsim_sim__DepSet_h40728c06__1.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_h700cc5f3__0.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_h700cc5f3__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__0.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__1.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__1.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__2.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__2.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__3.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__3.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__4.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__4.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_hda50bfa8__0.o Vsim_VexRiscv__DepSet_hda50bfa8__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_h9f7c89a9__0.o Vsim_VexRiscv__DepSet_h9f7c89a9__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_h9f7c89a9__1.o Vsim_VexRiscv__DepSet_h9f7c89a9__1.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_h9f7c89a9__2.o Vsim_VexRiscv__DepSet_h9f7c89a9__2.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Dpi.o Vsim__Dpi.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__0.o Vsim__Trace__0.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__1.o Vsim__Trace__1.cpp
+g++ -Os  -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__2.o Vsim__Trace__2.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__ConstPool_0.o Vsim__ConstPool_0.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__ConstPool_1.o Vsim__ConstPool_1.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim___024root__Slow.o Vsim___024root__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim___024root__DepSet_h104c642d__0__Slow.o Vsim___024root__DepSet_h104c642d__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim___024root__DepSet_hb1836b75__0__Slow.o Vsim___024root__DepSet_hb1836b75__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__Slow.o Vsim_sim__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h837b84dc__0__Slow.o Vsim_sim__DepSet_h837b84dc__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h837b84dc__1__Slow.o Vsim_sim__DepSet_h837b84dc__1__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h40728c06__0__Slow.o Vsim_sim__DepSet_h40728c06__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_sim__DepSet_h40728c06__1__Slow.o Vsim_sim__DepSet_h40728c06__1__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__Slow.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_h700cc5f3__0__Slow.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_h700cc5f3__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__0__Slow.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__Slow.o Vsim_VexRiscv__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_hda50bfa8__0__Slow.o Vsim_VexRiscv__DepSet_hda50bfa8__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_hda50bfa8__1__Slow.o Vsim_VexRiscv__DepSet_hda50bfa8__1__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim_VexRiscv__DepSet_h9f7c89a9__0__Slow.o Vsim_VexRiscv__DepSet_h9f7c89a9__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Syms.o Vsim__Syms.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__0__Slow.o Vsim__Trace__0__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__1__Slow.o Vsim__Trace__1__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__2__Slow.o Vsim__Trace__2__Slow.cpp
+g++   -I.  -MMD -I/home/kevin/verilator/include -I/home/kevin/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -ggdb -Wall -O3   -I/home/kevin/litex/litex/build/sim/core   -c -o Vsim__Trace__3__Slow.o Vsim__Trace__3__Slow.cpp
+echo "" > Vsim__ALL.verilator_deplist.tmp
+Archive ar -rcs Vsim__ALL.a Vsim.o Vsim___024root__DepSet_h104c642d__0.o Vsim___024root__DepSet_hb1836b75__0.o Vsim_sim__DepSet_h837b84dc__0.o Vsim_sim__DepSet_h40728c06__0.o Vsim_sim__DepSet_h40728c06__1.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_h700cc5f3__0.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__0.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__1.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__2.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__3.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__4.o Vsim_VexRiscv__DepSet_hda50bfa8__0.o Vsim_VexRiscv__DepSet_h9f7c89a9__0.o Vsim_VexRiscv__DepSet_h9f7c89a9__1.o Vsim_VexRiscv__DepSet_h9f7c89a9__2.o Vsim__Dpi.o Vsim__Trace__0.o Vsim__Trace__1.o Vsim__Trace__2.o Vsim__ConstPool_0.o Vsim__ConstPool_1.o Vsim___024root__Slow.o Vsim___024root__DepSet_h104c642d__0__Slow.o Vsim___024root__DepSet_hb1836b75__0__Slow.o Vsim_sim__Slow.o Vsim_sim__DepSet_h837b84dc__0__Slow.o Vsim_sim__DepSet_h837b84dc__1__Slow.o Vsim_sim__DepSet_h40728c06__0__Slow.o Vsim_sim__DepSet_h40728c06__1__Slow.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__Slow.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_h700cc5f3__0__Slow.o Vsim_VexRiscvLitexSmpCluster_Cc1_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw32_Ood__DepSet_he9900fa0__0__Slow.o Vsim_VexRiscv__Slow.o Vsim_VexRiscv__DepSet_hda50bfa8__0__Slow.o Vsim_VexRiscv__DepSet_hda50bfa8__1__Slow.o Vsim_VexRiscv__DepSet_h9f7c89a9__0__Slow.o Vsim__Syms.o Vsim__Trace__0__Slow.o Vsim__Trace__1__Slow.o Vsim__Trace__2__Slow.o Vsim__Trace__3__Slow.o
+g++    veril.o sim_init.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_threads.o Vsim__ALL.a   modules.o pads.o sim.o libdylib.o parse.o -lpthread -Wl,--no-as-needed -ljson-c -lz -lm -lstdc++ -Wl,--no-as-needed -ldl -levent  -pthread -lpthread -latomic   -o Vsim
+rm Vsim__ALL.verilator_deplist.tmp
+make[1]: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware/obj_dir'
+make: Leaving directory '/home/kevin/linux-on-litex-vexriscv/build/sim/gateware'
+
+[xgmii_ethernet] loaded (0x5636122c5ef0)
+[gmii_ethernet] loaded (0x5636122c5ef0)
+[jtagremote] loaded (0x5636122c5ef0)
+[spdeeprom] loaded (addr = 0x0)
+[clocker] loaded
+[serial2tcp] loaded (0x5636122c5ef0)
+[serial2console] loaded (0x5636122c5ef0)
+[ethernet] loaded (0x5636122c5ef0)
+[clocker] sys_clk: freq_hz=1000000, phase_deg=0
+
+        __   _ __      _  __
+       / /  (_) /____ | |/_/
+      / /__/ / __/ -_)>  <
+     /____/_/\__/\__/_/|_|
+   Build your hardware, easily!
+
+ (c) Copyright 2012-2023 Enjoy-Digital
+ (c) Copyright 2007-2015 M-Labs
+
+ BIOS built on Apr 29 2023 12:55:42
+ BIOS CRC passed (e36842e7)
+
+ LiteX git sha1: 34ec22f8
+
+--=============== SoC ==================--
+CPU:            VexRiscv SMP-LINUX @ 100MHz
+BUS:            WISHBONE 32-bit @ 4GiB
+CSR:            32-bit data
+ROM:            64.0KiB
+SRAM:           8.0KiB
+SDRAM:          64.0MiB 32-bit @ 100MT/s (CL-2 CWL-2)
+MAIN-RAM:       64.0MiB
+
+--========== Initialization ============--
+Initializing SDRAM @0x40000000...
+Switching SDRAM to software control.
+Switching SDRAM to hardware control.
+
+--============== Boot ==================--
+Booting from serial...
+Press Q or ESC to abort boot completely.
+sL5DdSMmkekro
+Timeout
+Executing booted program at 0x40f00000
+
+--============= Liftoff! ===============--
+
+OpenSBI v0.8-1-gecf7701
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name       : LiteX / VexRiscv-SMP
+Platform Features   : timer,mfdeleg
+Platform HART Count : 8
+Boot HART ID        : 0
+Boot HART ISA       : rv32imas
+BOOT HART Features  : time
+BOOT HART PMP Count : 0
+Firmware Base       : 0x40f00000
+Firmware Size       : 124 KB
+Runtime SBI Version : 0.2
+
+MIDELEG : 0x00000222
+MEDELEG : 0x0000b101
+[    0.000000] Linux version 5.14.0 (florent@panda) (riscv32-buildroot-linux-gnu-gcc.br_real (Buildroot 2021.08-381-g279167ee8d) 10.3.0, GNU ld (GNU Binutils) 2.36.1) #1 SMP Tue Sep 21 12:57:31 CEST 2021
+[    0.000000] earlycon: liteuart0 at I/O port 0x0 (options '')
+[    0.000000] Malformed early option 'console'
+[    0.000000] earlycon: liteuart0 at MMIO 0xf0001000 (options '')
+[    0.000000] printk: bootconsole [liteuart0] enabled
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000040000000-0x0000000043ffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x0000000043ffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x0000000043ffffff]
+[    0.000000] SBI specification v0.2 detected
+[    0.000000] SBI implementation ID=0x1 Version=0x8
+[    0.000000] SBI TIME extension detected
+[    0.000000] SBI IPI extension detected
+[    0.000000] SBI RFENCE extension detected
+[    0.000000] SBI v0.2 HSM extension detected
+[    0.000000] riscv: ISA extensions aimp
+[    0.000000] riscv: ELF capabilities aim
+[    0.000000] percpu: Embedded 8 pages/cpu s11340 r0 d21428 u32768
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+[    0.000000] Kernel command line: console=liteuart earlycon=liteuart,0xf0001000 rootwait root=/dev/ram0
+[    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    0.000000] Sorting __ex_table...
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 48644K/65536K available (5685K kernel code, 572K rwdata, 883K rodata, 209K init, 221K bss, 16892K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] riscv-intc: 32 local interrupts mapped
+[    0.000000] plic: interrupt-controller@f0c00000: mapped 32 interrupts with 1 handlers for 2 contexts.
+[    0.000000] random: get_random_bytes called from start_kernel+0x4ac/0x63c with crng_init=0
+[    0.000000] riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [0]
+[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x171024e7e0, max_idle_ns: 440795205315 ns
+[    0.000017] sched_clock: 64 bits at 100MHz, resolution 10ns, wraps every 4398046511100ns
+[    0.002164] Console: colour dummy device 80x25
+[    0.003097] Calibrating delay loop (skipped), value calculated using timer frequency.. 200.00 BogoMIPS (lpj=400000)
+[    0.004634] pid_max: default: 32768 minimum: 301
+[    0.008055] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.009092] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.029602] ASID allocator using 9 bits (512 entries)
+[    0.032202] rcu: Hierarchical SRCU implementation.
+[    0.037673] smp: Bringing up secondary CPUs ...
+[    0.038235] smp: Brought up 1 node, 1 CPU
+[    0.043649] devtmpfs: initialized
+[    0.067172] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.068496] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.076186] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.219368] pps_core: LinuxPPS API ver. 1 registered
+[    0.219903] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.221322] PTP clock support registered
+[    0.224488] FPGA manager framework
+[    0.237864] clocksource: Switched to clocksource riscv_clocksource
+[    0.388310] NET: Registered PF_INET protocol family
+[    0.390444] IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    0.397993] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 6144 bytes, linear)
+[    0.399314] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.400543] TCP bind hash table entries: 1024 (order: 1, 8192 bytes, linear)
+[    0.401753] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.403182] UDP hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    0.404274] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    0.422111] Unpacking initramfs...
+[    0.457924] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+[    0.665012] io scheduler mq-deadline registered
+[    0.665874] io scheduler kyber registered
+[    0.914509] LiteX SoC Controller driver initialized
+[    4.159431] Freeing initrd memory: 8192K
+[    4.663497] f0001000.serial: ttyLXU0 at MMIO 0x0 (irq = 0, base_baud = 0) is a liteuart
+[    4.664780] printk: console [liteuart0] enabled
+[    4.664780] printk: console [liteuart0] enabled
+[    4.665718] printk: bootconsole [liteuart0] disabled
+[    4.665718] printk: bootconsole [liteuart0] disabled
+[    4.686406] i2c_dev: i2c /dev entries driver
+[    4.723480] NET: Registered PF_INET6 protocol family
+[    4.736993] Segment Routing with IPv6
+[    4.738084] In-situ OAM (IOAM) with IPv6
+[    4.739621] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    4.752560] NET: Registered PF_PACKET protocol family
+[    4.764135] Freeing unused kernel image (initmem) memory: 204K
+[    4.764911] Kernel memory protection not selected by kernel config.
+[    4.766185] Run /init as init process
+Starting syslogd: OK
+Starting klogd: OK
+Running sysctl: OK
+Saving random seed: [    6.822677] random: dd: uninitialized urandom read (512 bytes read)
+OK
+Starting network: OK
+
+Welcome to Buildroot
+buildroot login: root
+                   __   _
+                  / /  (_)__  __ ____ __
+                 / /__/ / _ \/ // /\ \ /
+                /____/_/_//_/\_,_//_\_\
+                      / _ \/ _ \
+   __   _ __      _  _\___/_//_/         ___  _
+  / /  (_) /____ | |/_/__| | / /____ __ / _ \(_)__ _____  __
+ / /__/ / __/ -_)>  </___/ |/ / -_) \ // , _/ (_-</ __/ |/ /
+/____/_/\__/\__/_/|_|____|___/\__/_\_\/_/|_/_/___/\__/|___/
+                  / __/  |/  / _ \
+                 _\ \/ /|_/ / ___/
+                /___/_/  /_/_/
+  32-bit RISC-V Linux running on LiteX / VexRiscv-SMP.
+
+login[70]: root login on 'console'
+root@buildroot:~# ls /
+bin      init     linuxrc  opt      run      tmp
+dev      lib      media    proc     sbin     usr
+etc      lib32    mnt      root     sys      var
+root@buildroot:~# help
+Built-in commands:
+------------------
+        . : [ [[ alias bg break cd chdir command continue echo eval exec
+        exit export false fg getopts hash help history jobs kill let
+        local printf pwd read readonly return set shift source test times
+        trap true type ulimit umask unalias unset wait
+root@buildroot:~#
 ```
