@@ -114,7 +114,7 @@ cd openocdT
 ./configure --enable-ftdi
 sudo make install
 ```
-[Install OpenOCD.log](https://github.com/bol-edu/litex-lab/files/11359210/Install.OpenOCD.log)
+[Install OpenOCD.log](https://github.com/bol-edu/litex-lab/files/11359212/Install.OpenOCD.log)
 
 Build the kv260 bitstream
 ```
