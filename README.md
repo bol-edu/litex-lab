@@ -74,7 +74,8 @@ unzip linux_2022_03_23.zip -d ./images (enter y)
 [Install and run litex.log](https://github.com/bol-edu/litex-lab/files/11359202/Install.and.run.litex.log)
 
 ```console
-/ /  (_) /____ | |/_/
+        __   _ __      _  __
+       / /  (_) /____ | |/_/
       / /__/ / __/ -_)>  <
      /____/_/\__/\__/_/|_|
    Build your hardware, easily!
