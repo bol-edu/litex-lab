@@ -5,7 +5,7 @@ More [introduction of LiteX](https://github.com/enjoy-digital/litex#welcome-to-l
 
 ## LiteX Lab Purpose
 * Run Linux OS on VexRiscv SoC with Verilator RTL simulator
-* Port VexRiscv SoC to [Xilinx kv260 board](https://github.com/litex-hub/litex-boards#-boards-list)
+* Port VexRiscv SoC to [Xilinx KV260 board](https://github.com/litex-hub/litex-boards#-boards-list)
 
 ## LiteX Lab Prerequisites
 * Ubuntu 20.04+
