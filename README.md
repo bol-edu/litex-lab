@@ -4,8 +4,8 @@ The LiteX framework provides a toolchain infrastructure to create FPGA Cores/SoC
 More [introduction of LiteX](https://github.com/enjoy-digital/litex#welcome-to-litex).
 
 ## LiteX Lab Purpose
-* Run Linux OS on VexRiscv soc with Verilator RTL simulator
-* Port VexRiscv soc to [Xilinx kv260 board](https://github.com/litex-hub/litex-boards#-boards-list)
+* Run Linux OS on VexRiscv SoC with Verilator RTL simulator
+* Port VexRiscv SoC to [Xilinx kv260 board](https://github.com/litex-hub/litex-boards#-boards-list)
 
 ## LiteX Lab Prerequisites
 * Ubuntu 20.04+
@@ -23,7 +23,7 @@ More [introduction of LiteX](https://github.com/enjoy-digital/litex#welcome-to-l
 * https://github.com/enjoy-digital/litex#quick-start-guide
 * https://github.com/litex-hub/linux-on-litex-vexriscv
 
-## Run Linux OS on VexRiscv soc with Verilator RTL simulator
+## Run Linux OS on VexRiscv SoC with Verilator RTL simulator
 
 Install basic tools and dependencies
 ```
@@ -48,7 +48,7 @@ sudo make install
 ```
 [Compile and install latest Verilator.log](https://github.com/bol-edu/litex-lab/files/11359135/Compile.and.install.latest.Verilator.log)
  
-Install litex python3 dependencies
+Install LiteX python3 dependencies
 ```
 cd ~
 python3 -m pip install ninja
@@ -57,7 +57,7 @@ export PATH=$PATH:~/.local/bin
 ```
 [Install litex python3 dependencies.log](https://github.com/bol-edu/litex-lab/files/11359136/Install.litex.python3.dependencies.log)
 
-Install and run litex
+Install and run LiteX
 ```
 git clone https://github.com/litex-hub/linux-on-litex-vexriscv
 cd linux-on-litex-vexriscv
@@ -73,6 +73,7 @@ unzip linux_2022_03_23.zip -d ./images (enter y)
 ```
 [Install and run litex.log](https://github.com/bol-edu/litex-lab/files/11359202/Install.and.run.litex.log)
 
+Simulate LiteX VexRiscv SoC and boot Linux/OpenSBI OS
 ```console
         __   _ __      _  __
        / /  (_) /____ | |/_/
@@ -256,7 +257,7 @@ Built-in commands:
         trap true type ulimit umask unalias unset wait
 root@buildroot:~#
 ```
-## Port VexRiscv soc to Xilinx kv260 board
+## Port VexRiscv SoC to Xilinx KV260 board
 
 Install OpenOCD (needed for hardware test)
 ```
@@ -269,7 +270,7 @@ sudo make install
 ```
 [Install OpenOCD.log](https://github.com/bol-edu/litex-lab/files/11359260/Install.OpenOCD.log)
 
-Build the kv260 bitstream
+Build the KV260 bitstream
 ```
 ToDo..
 ```
